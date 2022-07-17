@@ -530,8 +530,10 @@ func newGetBlocksRequest(baseURL *url.URL, id Id, params *GetBlocksParams) (*htt
 
 	q := queryURL.Query()
 
-	if err := client.AddQueryParam(q, "page_size", params.PageSize); err != nil {
-		return nil, err
+	if params.PageSize != nil {
+		if err := client.AddQueryParam(q, "page_size", *params.PageSize); err != nil {
+			return nil, err
+		}
 	}
 
 	if params.StartCursor != nil {
@@ -2037,8 +2039,10 @@ func newListUsersRequest(baseURL *url.URL, params *ListUsersParams) (*http.Reque
 
 	q := queryURL.Query()
 
-	if err := client.AddQueryParam(q, "page_size", params.PageSize); err != nil {
-		return nil, err
+	if params.PageSize != nil {
+		if err := client.AddQueryParam(q, "page_size", *params.PageSize); err != nil {
+			return nil, err
+		}
 	}
 
 	if params.StartCursor != nil {

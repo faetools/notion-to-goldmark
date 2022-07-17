@@ -21,7 +21,8 @@ func NewCallout(icon notion.Icon) *Callout {
 		n.AppendChild(n, ast.NewString([]byte(*icon.Emoji)))
 	case notion.IconTypeExternal:
 		link := ast.NewLink()
-		link.Destination = []byte(*icon.Url)
+
+		link.Destination = []byte(icon.URL())
 		n.AppendChild(n, ast.NewImage(link))
 	}
 

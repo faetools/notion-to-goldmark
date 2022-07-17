@@ -3,7 +3,7 @@ module github.com/faetools/notion-to-goldmark
 go 1.18
 
 require (
-	github.com/faetools/go-notion v0.0.19
+	github.com/faetools/go-notion v0.0.24
 	github.com/yuin/goldmark v1.4.13
 	gopkg.in/go-playground/assert.v1 v1.2.1
 )

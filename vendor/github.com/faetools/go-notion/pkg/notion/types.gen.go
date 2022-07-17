@@ -43,6 +43,82 @@ const (
 	BlockTypeVideo            BlockType = "video"
 )
 
+// Defines values for CodeLanguage.
+const (
+	CodeLanguageAbap         CodeLanguage = "abap"
+	CodeLanguageArduino      CodeLanguage = "arduino"
+	CodeLanguageBash         CodeLanguage = "bash"
+	CodeLanguageBasic        CodeLanguage = "basic"
+	CodeLanguageC            CodeLanguage = "c"
+	CodeLanguageC1           CodeLanguage = "c++"
+	CodeLanguageC2           CodeLanguage = "c#"
+	CodeLanguageClojure      CodeLanguage = "clojure"
+	CodeLanguageCoffeescript CodeLanguage = "coffeescript"
+	CodeLanguageCss          CodeLanguage = "css"
+	CodeLanguageDart         CodeLanguage = "dart"
+	CodeLanguageDiff         CodeLanguage = "diff"
+	CodeLanguageDocker       CodeLanguage = "docker"
+	CodeLanguageElixir       CodeLanguage = "elixir"
+	CodeLanguageElm          CodeLanguage = "elm"
+	CodeLanguageErlang       CodeLanguage = "erlang"
+	CodeLanguageF            CodeLanguage = "f#"
+	CodeLanguageFlow         CodeLanguage = "flow"
+	CodeLanguageFortran      CodeLanguage = "fortran"
+	CodeLanguageGherkin      CodeLanguage = "gherkin"
+	CodeLanguageGlsl         CodeLanguage = "glsl"
+	CodeLanguageGo           CodeLanguage = "go"
+	CodeLanguageGraphql      CodeLanguage = "graphql"
+	CodeLanguageGroovy       CodeLanguage = "groovy"
+	CodeLanguageHaskell      CodeLanguage = "haskell"
+	CodeLanguageHtml         CodeLanguage = "html"
+	CodeLanguageJava         CodeLanguage = "java"
+	CodeLanguageJavaccc      CodeLanguage = "java/c/c++/c#"
+	CodeLanguageJavascript   CodeLanguage = "javascript"
+	CodeLanguageJson         CodeLanguage = "json"
+	CodeLanguageJulia        CodeLanguage = "julia"
+	CodeLanguageKotlin       CodeLanguage = "kotlin"
+	CodeLanguageLatex        CodeLanguage = "latex"
+	CodeLanguageLess         CodeLanguage = "less"
+	CodeLanguageLisp         CodeLanguage = "lisp"
+	CodeLanguageLivescript   CodeLanguage = "livescript"
+	CodeLanguageLua          CodeLanguage = "lua"
+	CodeLanguageMakefile     CodeLanguage = "makefile"
+	CodeLanguageMarkdown     CodeLanguage = "markdown"
+	CodeLanguageMarkup       CodeLanguage = "markup"
+	CodeLanguageMatlab       CodeLanguage = "matlab"
+	CodeLanguageMermaid      CodeLanguage = "mermaid"
+	CodeLanguageNix          CodeLanguage = "nix"
+	CodeLanguageObjectiveC   CodeLanguage = "objective-c"
+	CodeLanguageOcaml        CodeLanguage = "ocaml"
+	CodeLanguagePascal       CodeLanguage = "pascal"
+	CodeLanguagePerl         CodeLanguage = "perl"
+	CodeLanguagePhp          CodeLanguage = "php"
+	CodeLanguagePlainText    CodeLanguage = "plain text"
+	CodeLanguagePowershell   CodeLanguage = "powershell"
+	CodeLanguageProlog       CodeLanguage = "prolog"
+	CodeLanguageProtobuf     CodeLanguage = "protobuf"
+	CodeLanguagePython       CodeLanguage = "python"
+	CodeLanguageR            CodeLanguage = "r"
+	CodeLanguageReason       CodeLanguage = "reason"
+	CodeLanguageRuby         CodeLanguage = "ruby"
+	CodeLanguageRust         CodeLanguage = "rust"
+	CodeLanguageSass         CodeLanguage = "sass"
+	CodeLanguageScala        CodeLanguage = "scala"
+	CodeLanguageScheme       CodeLanguage = "scheme"
+	CodeLanguageScss         CodeLanguage = "scss"
+	CodeLanguageShell        CodeLanguage = "shell"
+	CodeLanguageSql          CodeLanguage = "sql"
+	CodeLanguageSwift        CodeLanguage = "swift"
+	CodeLanguageTypescript   CodeLanguage = "typescript"
+	CodeLanguageVbNet        CodeLanguage = "vb.net"
+	CodeLanguageVerilog      CodeLanguage = "verilog"
+	CodeLanguageVhdl         CodeLanguage = "vhdl"
+	CodeLanguageVisualBasic  CodeLanguage = "visual basic"
+	CodeLanguageWebassembly  CodeLanguage = "webassembly"
+	CodeLanguageXml          CodeLanguage = "xml"
+	CodeLanguageYaml         CodeLanguage = "yaml"
+)
+
 // Defines values for Color.
 const (
 	ColorBlue             Color = "blue"
@@ -72,10 +148,17 @@ const (
 	FileTypeFile     FileType = "file"
 )
 
+// Defines values for FileWithCaptionType.
+const (
+	FileWithCaptionTypeExternal FileWithCaptionType = "external"
+	FileWithCaptionTypeFile     FileWithCaptionType = "file"
+)
+
 // Defines values for IconType.
 const (
 	IconTypeEmoji    IconType = "emoji"
 	IconTypeExternal IconType = "external"
+	IconTypeFile     IconType = "file"
 )
 
 // Defines values for LinkToPageType.
@@ -135,8 +218,10 @@ const (
 
 // Defines values for ParentType.
 const (
-	ParentTypePageId    ParentType = "page_id"
-	ParentTypeWorkspace ParentType = "workspace"
+	ParentTypeBlockId    ParentType = "block_id"
+	ParentTypeDatabaseId ParentType = "database_id"
+	ParentTypePageId     ParentType = "page_id"
+	ParentTypeWorkspace  ParentType = "workspace"
 )
 
 // Defines values for PropertyType.
@@ -173,6 +258,11 @@ const (
 const (
 	SortDirectionAscending  SortDirection = "ascending"
 	SortDirectionDescending SortDirection = "descending"
+)
+
+// Defines values for SyncedFromType.
+const (
+	SyncedFromTypeBlockId SyncedFromType = "block_id"
 )
 
 // Defines values for UserType.
@@ -213,8 +303,14 @@ type Annotations struct {
 // The optional fields are filled depending on the value of `type`.
 type Block struct {
 	// The archived status of the block.
-	Archived bool      `json:"archived"`
-	Bookmark *Bookmark `json:"bookmark,omitempty"`
+	Archived bool `json:"archived"`
+
+	// File objects contain data about files uploaded to Notion as well as external files linked in Notion. A PDF can also have a caption.
+	Audio    *FileWithCaption `json:"audio,omitempty"`
+	Bookmark *Bookmark        `json:"bookmark,omitempty"`
+
+	// Breadcrumb block objects do not contain any information within the breadcrumb property
+	Breadcrumb *map[string]interface{} `json:"breadcrumb,omitempty"`
 
 	// List item block objects contain this information within the `numbered_list_item` or `bulleted_list_item` property.
 	BulletedListItem *ListItem `json:"bulleted_list_item,omitempty"`
@@ -227,6 +323,9 @@ type Block struct {
 
 	// The title of the child page or database.
 	ChildPage *Child `json:"child_page,omitempty"`
+
+	// Code block objects contain this information within the `code` property.
+	Code *Code `json:"code,omitempty"`
 
 	// Columns are parent blocks for any supported block children, excluding columns. They do not contain any information within the column property. They can only be appended to column_lists.
 	Column *map[string]interface{} `json:"column,omitempty"`
@@ -249,8 +348,8 @@ type Block struct {
 	// Equation block objects contain this information within the `equation` property
 	Equation *Equation `json:"equation,omitempty"`
 
-	// File objects contain data about files uploaded to Notion as well as external files linked in Notion.
-	File *File `json:"file,omitempty"`
+	// File objects contain data about files uploaded to Notion as well as external files linked in Notion. A PDF can also have a caption.
+	File *FileWithCaption `json:"file,omitempty"`
 
 	// Whether or not the block has children blocks nested within it.
 	HasChildren bool     `json:"has_children"`
@@ -261,8 +360,8 @@ type Block struct {
 	// A unique identifier for a page, block, database, or user.
 	Id UUID `json:"id"`
 
-	// File objects contain data about files uploaded to Notion as well as external files linked in Notion.
-	Image *File `json:"image,omitempty"`
+	// File objects contain data about files uploaded to Notion as well as external files linked in Notion. A PDF can also have a caption.
+	Image *FileWithCaption `json:"image,omitempty"`
 
 	// The User object represents a user in a Notion workspace. Users include full workspace members, and bots. Guests are not included.
 	LastEditedBy *User `json:"last_edited_by,omitempty"`
@@ -285,8 +384,11 @@ type Block struct {
 	// Paragraph block objects contain this information within the `paragraph` property.
 	Paragraph *Paragraph `json:"paragraph,omitempty"`
 
-	// File objects contain data about files uploaded to Notion as well as external files linked in Notion.
-	Pdf *File `json:"pdf,omitempty"`
+	// The `parent` property of a page or database contains these keys. Mandatory when creating, must be missing when updating.
+	Parent Parent `json:"parent"`
+
+	// File objects contain data about files uploaded to Notion as well as external files linked in Notion. A PDF can also have a caption.
+	Pdf *FileWithCaption `json:"pdf,omitempty"`
 
 	// Quote block objects contain the following information within the quote field.
 	Quote       *Quote       `json:"quote,omitempty"`
@@ -309,6 +411,9 @@ type Block struct {
 	// Type of block.
 	Type BlockType `json:"type"`
 
+	// Some block types aren't available yet
+	Unsupported *map[string]interface{} `json:"unsupported,omitempty"`
+
 	// File objects contain data about files uploaded to Notion as well as external files linked in Notion.
 	Video *Video `json:"video,omitempty"`
 }
@@ -328,7 +433,7 @@ type BlocksChildren struct {
 type BlocksList struct {
 	Block      map[string]interface{} `json:"block"`
 	HasMore    bool                   `json:"has_more"`
-	NextCursor string                 `json:"next_cursor"`
+	NextCursor *string                `json:"next_cursor"`
 	Object     string                 `json:"object"`
 	Results    Blocks                 `json:"results"`
 	Type       string                 `json:"type"`
@@ -352,12 +457,10 @@ type Bot struct {
 
 // Callout block objects contain the following information within the callout field.
 type Callout struct {
-	Children Blocks `json:"children"`
-
 	// The color of the block.
 	Color Color `json:"color"`
 
-	// Page or database icon. It is either an external file or an emoji.
+	// Page or database icon. It is either an emoji or a file.
 	Icon     Icon      `json:"icon"`
 	RichText RichTexts `json:"rich_text"`
 }
@@ -374,6 +477,18 @@ type Child struct {
 	Title string `json:"title"`
 }
 
+// Code block objects contain this information within the `code` property.
+type Code struct {
+	Caption *RichTexts `json:"caption,omitempty"`
+
+	// Coding language in code block
+	Language CodeLanguage `json:"language"`
+	RichText RichTexts    `json:"rich_text"`
+}
+
+// Coding language in code block
+type CodeLanguage string
+
 // The color of the block.
 type Color string
 
@@ -383,19 +498,21 @@ type Database struct {
 	Archived bool `json:"archived"`
 
 	// File objects contain data about files uploaded to Notion as well as external files linked in Notion.
-	Cover *File `json:"cover,omitempty"`
+	Cover *File `json:"cover"`
 
 	// The User object represents a user in a Notion workspace. Users include full workspace members, and bots. Guests are not included.
 	CreatedBy *User `json:"created_by,omitempty"`
 
 	// Date and time when this database was created. Formatted as an ISO 8601 date time string.
 	CreatedTime *time.Time `json:"created_time,omitempty"`
+	Description RichTexts  `json:"description"`
 
-	// Page or database icon. It is either an external file or an emoji.
-	Icon *Icon `json:"icon,omitempty"`
+	// Page or database icon. It is either an emoji or a file.
+	Icon *Icon `json:"icon"`
 
 	// A unique identifier for a page, block, database, or user.
-	Id UUID `json:"id"`
+	Id       UUID `json:"id"`
+	IsInline bool `json:"is_inline"`
 
 	// The User object represents a user in a Notion workspace. Users include full workspace members, and bots. Guests are not included.
 	LastEditedBy *User `json:"last_edited_by,omitempty"`
@@ -407,9 +524,9 @@ type Database struct {
 	Object string `json:"object"`
 
 	// The `parent` property of a page or database contains these keys. Mandatory when creating, must be missing when updating.
-	Parent     *Parent       `json:"parent,omitempty"`
+	Parent     *Parent         `json:"parent,omitempty"`
 	Properties PropertyMetaMap `json:"properties"`
-	Title      RichTexts     `json:"title"`
+	Title      RichTexts       `json:"title"`
 
 	// The URL of the Notion page.
 	Url string `json:"url"`
@@ -432,7 +549,7 @@ type Date struct {
 	// An ISO 8601 formatted date, with optional time. Represents the end of a date range.
 	//
 	// If `null`, this property's date value is not a range.
-	End *time.Time `json:"end,omitempty"`
+	End *time.Time `json:"end"`
 
 	// An ISO 8601 format date, with optional time.
 	Start time.Time `json:"start"`
@@ -442,7 +559,7 @@ type Date struct {
 	// When time zone is provided, start and end should not have any UTC offset. In addition, when time zone is provided, start and end cannot be dates without time information.
 	//
 	// If null, time zone information will be contained in UTC offsets in start and end.
-	TimeZone *string `json:"time_zone,omitempty"`
+	TimeZone *string `json:"time_zone"`
 }
 
 // Embed blocks include block types that allow displaying another website within Notion.
@@ -486,6 +603,23 @@ type File struct {
 // Type of this file object.
 type FileType string
 
+// File objects contain data about files uploaded to Notion as well as external files linked in Notion. A PDF can also have a caption.
+type FileWithCaption struct {
+	Caption *RichTexts `json:"caption,omitempty"`
+
+	// An external file is any URL that isn't hosted by Notion.
+	External *ExternalFile `json:"external,omitempty"`
+
+	// File objects contain this information within the `file` property.
+	File *NotionFile `json:"file,omitempty"`
+
+	// Type of this file object.
+	Type FileWithCaptionType `json:"type"`
+}
+
+// Type of this file object.
+type FileWithCaptionType string
+
 // Files defines model for Files.
 type Files []File
 
@@ -513,16 +647,19 @@ type Heading struct {
 	RichText RichTexts `json:"rich_text"`
 }
 
-// Page or database icon. It is either an external file or an emoji.
+// Page or database icon. It is either an emoji or a file.
 type Icon struct {
 	// Emoji character.
 	Emoji *string `json:"emoji,omitempty"`
 
+	// An external file is any URL that isn't hosted by Notion.
+	External *ExternalFile `json:"external,omitempty"`
+
+	// File objects contain this information within the `file` property.
+	File *NotionFile `json:"file,omitempty"`
+
 	// Type of icon.
 	Type IconType `json:"type"`
-
-	// Link to the externally hosted content.
-	Url *string `json:"url,omitempty"`
 }
 
 // Type of icon.
@@ -559,8 +696,6 @@ type LinkToPageType string
 
 // List item block objects contain this information within the `numbered_list_item` or `bulleted_list_item` property.
 type ListItem struct {
-	Children Blocks `json:"children"`
-
 	// The color of the block.
 	Color    Color     `json:"color"`
 	RichText RichTexts `json:"rich_text"`
@@ -593,6 +728,9 @@ type MinimalPropertyMetas struct {
 	Title *PropertyMeta `json:"title,omitempty"`
 }
 
+// A unique identifier for a page, block, database, or user.
+type NextCursor string
+
 // File objects contain this information within the `file` property.
 type NotionFile struct {
 	// Date and time when the URL will expire.
@@ -621,7 +759,7 @@ type Page struct {
 	Archived bool `json:"archived"`
 
 	// File objects contain data about files uploaded to Notion as well as external files linked in Notion.
-	Cover *File `json:"cover,omitempty"`
+	Cover *File `json:"cover"`
 
 	// The User object represents a user in a Notion workspace. Users include full workspace members, and bots. Guests are not included.
 	CreatedBy *User `json:"created_by,omitempty"`
@@ -629,8 +767,8 @@ type Page struct {
 	// Date and time when this page was created. Formatted as an ISO 8601 date time string.
 	CreatedTime *time.Time `json:"created_time,omitempty"`
 
-	// Page or database icon. It is either an external file or an emoji.
-	Icon *Icon `json:"icon,omitempty"`
+	// Page or database icon. It is either an emoji or a file.
+	Icon *Icon `json:"icon"`
 
 	// A unique identifier for a page, block, database, or user.
 	Id UUID `json:"id"`
@@ -659,18 +797,18 @@ type Pages []Page
 
 // PagesList defines model for PagesList.
 type PagesList struct {
-	HasMore    bool                   `json:"has_more"`
-	NextCursor string                 `json:"next_cursor"`
+	HasMore bool `json:"has_more"`
+
+	// A unique identifier for a page, block, database, or user.
+	NextCursor *NextCursor            `json:"next_cursor"`
 	Object     string                 `json:"object"`
-	Pages      map[string]interface{} `json:"pages"`
+	Page       map[string]interface{} `json:"page"`
 	Results    Pages                  `json:"results"`
 	Type       string                 `json:"type"`
 }
 
 // Paragraph block objects contain this information within the `paragraph` property.
 type Paragraph struct {
-	Children Blocks `json:"children"`
-
 	// The color of the block.
 	Color    Color     `json:"color"`
 	RichText RichTexts `json:"rich_text"`
@@ -679,7 +817,13 @@ type Paragraph struct {
 // The `parent` property of a page or database contains these keys. Mandatory when creating, must be missing when updating.
 type Parent struct {
 	// A unique identifier for a page, block, database, or user.
-	PageId UUID `json:"page_id"`
+	BlockId *UUID `json:"block_id,omitempty"`
+
+	// A unique identifier for a page, block, database, or user.
+	DatabaseId *UUID `json:"database_id,omitempty"`
+
+	// A unique identifier for a page, block, database, or user.
+	PageId *UUID `json:"page_id,omitempty"`
 
 	// The type of the parent.
 	Type ParentType `json:"type"`
@@ -783,8 +927,6 @@ type PropertyValues interface{}
 
 // Quote block objects contain the following information within the quote field.
 type Quote struct {
-	Children Blocks `json:"children"`
-
 	// The color of the block.
 	Color    Color     `json:"color"`
 	RichText RichTexts `json:"rich_text"`
@@ -820,7 +962,7 @@ type RichText struct {
 	Equation *Equation `json:"equation,omitempty"`
 
 	// The URL of any link or internal Notion mention in this text, if any.
-	Href    *string  `json:"href,omitempty"`
+	Href    *string  `json:"href"`
 	Mention *Mention `json:"mention,omitempty"`
 
 	// The plain text without annotations.
@@ -872,14 +1014,21 @@ type Sorts []Sort
 
 // SyncedBlock defines model for SyncedBlock.
 type SyncedBlock struct {
-	Children   Blocks       `json:"children"`
-	SyncedFrom *interface{} `json:"synced_from,omitempty"`
+	SyncedFrom *SyncedFrom `json:"synced_from"`
 }
+
+// SyncedFrom defines model for SyncedFrom.
+type SyncedFrom struct {
+	// A unique identifier for a page, block, database, or user.
+	BlockId *UUID          `json:"block_id,omitempty"`
+	Type    SyncedFromType `json:"type"`
+}
+
+// SyncedFromType defines model for SyncedFrom.Type.
+type SyncedFromType string
 
 // Table defines model for Table.
 type Table struct {
-	Children Blocks `json:"children"`
-
 	// Whether or not the table has a column header. If true, the first row in the table will appear visually distinct from the other rows.
 	HasColumnHeader bool `json:"has_column_header"`
 
@@ -893,7 +1042,7 @@ type Table struct {
 // Table of contents block objects contain the following information within the `table_of_contents` property.
 type TableOfContents struct {
 	// The color of the block.
-	Color *Color `json:"color,omitempty"`
+	Color Color `json:"color"`
 }
 
 // Table row blocks contain this within the table_row property.
@@ -904,7 +1053,6 @@ type TableRow struct {
 
 // Template defines model for Template.
 type Template struct {
-	Children Blocks    `json:"children"`
 	RichText RichTexts `json:"rich_text"`
 }
 
@@ -914,7 +1062,7 @@ type Text struct {
 	Content string `json:"content"`
 
 	// An inline link in a text.
-	Link *Link `json:"link,omitempty"`
+	Link *Link `json:"link"`
 }
 
 // TextFilter defines model for TextFilter.
@@ -932,8 +1080,7 @@ type Title struct {
 // To do block objects contain this information within the `to_do` property.
 type ToDo struct {
 	// Whether the to_do is checked or not.
-	Checked  bool   `json:"checked"`
-	Children Blocks `json:"children"`
+	Checked bool `json:"checked"`
 
 	// The color of the block.
 	Color    Color     `json:"color"`
@@ -942,8 +1089,6 @@ type ToDo struct {
 
 // Toggle block objects contain the following information within the toggle field.
 type Toggle struct {
-	Children Blocks `json:"children"`
-
 	// The color of the block.
 	Color    Color     `json:"color"`
 	RichText RichTexts `json:"rich_text"`
@@ -955,14 +1100,14 @@ type UUID string
 // The User object represents a user in a Notion workspace. Users include full workspace members, and bots. Guests are not included.
 type User struct {
 	// Chosen avatar image.
-	AvatarUrl string `json:"avatar_url"`
-	Bot       *Bot   `json:"bot,omitempty"`
+	AvatarUrl *string `json:"avatar_url,omitempty"`
+	Bot       *Bot    `json:"bot,omitempty"`
 
 	// A unique identifier for a page, block, database, or user.
 	Id UUID `json:"id"`
 
 	// User's name, as displayed in Notion.
-	Name string `json:"name"`
+	Name *string `json:"name,omitempty"`
 
 	// Always "user"
 	Object string `json:"object"`
@@ -971,7 +1116,7 @@ type User struct {
 	Person *Person `json:"person,omitempty"`
 
 	// Type of the user.
-	Type UserType `json:"type"`
+	Type *UserType `json:"type,omitempty"`
 }
 
 // Type of the user.
@@ -983,7 +1128,7 @@ type Users []User
 // UsersList defines model for UsersList.
 type UsersList struct {
 	HasMore    bool                   `json:"has_more"`
-	NextCursor string                 `json:"next_cursor"`
+	NextCursor *string                `json:"next_cursor,omitempty"`
 	Object     string                 `json:"object"`
 	Results    Users                  `json:"results"`
 	Type       string                 `json:"type"`
@@ -1052,10 +1197,10 @@ type DatabaseRequestBody Database
 // GetBlocksParams defines parameters for GetBlocks.
 type GetBlocksParams struct {
 	// The number of items from the full list desired in the response.
-	PageSize PageSize `json:"page_size"`
+	PageSize *PageSize `form:"page_size,omitempty" json:"page_size,omitempty"`
 
 	// If supplied, this endpoint will return a page of results starting after the cursor provided. If not supplied, this endpoint will return the first page of results.
-	StartCursor *StartCursor `json:"start_cursor,omitempty"`
+	StartCursor *StartCursor `form:"start_cursor,omitempty" json:"start_cursor,omitempty"`
 }
 
 // AppendBlocksJSONBody defines parameters for AppendBlocks.
@@ -1076,10 +1221,10 @@ type SearchJSONBody map[string]interface{}
 // ListUsersParams defines parameters for ListUsers.
 type ListUsersParams struct {
 	// The number of items from the full list desired in the response.
-	PageSize PageSize `json:"page_size"`
+	PageSize *PageSize `form:"page_size,omitempty" json:"page_size,omitempty"`
 
 	// If supplied, this endpoint will return a page of results starting after the cursor provided. If not supplied, this endpoint will return the first page of results.
-	StartCursor *StartCursor `json:"start_cursor,omitempty"`
+	StartCursor *StartCursor `form:"start_cursor,omitempty" json:"start_cursor,omitempty"`
 }
 
 // AppendBlocksJSONRequestBody defines body for AppendBlocks for application/json ContentType.

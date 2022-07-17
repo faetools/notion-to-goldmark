@@ -39,14 +39,6 @@ func wrapInColor(c notion.Color, child ast.Node) ast.Node {
 	return n
 }
 
-func appendCommon(n ast.Node, rts notion.RichTexts, children notion.Blocks) {
-	for _, child := range toNodeRichTexts(rts) {
-		n.AppendChild(n, child)
-	}
-
-	addBlockChildren(n, children)
-}
-
 // addBlockChildren adds any children blocks
 // TODO: call the API go get the children
 func addBlockChildren(n ast.Node, bs notion.Blocks) {
@@ -54,20 +46,25 @@ func addBlockChildren(n ast.Node, bs notion.Blocks) {
 		return
 	}
 
-	children := &n_ast.Children{}
-	for _, child := range FromBlocks(bs) {
-		children.AppendChild(children, child)
-	}
+	// TODO
+	// children := &n_ast.Children{}
+	// for _, child := range FromBlocks(bs) {
+	// 	children.AppendChild(children, child)
+	// }
 
-	n.AppendChild(n, children)
+	// n.AppendChild(n, children)
 }
 
-func addCaption(n ast.Node, rts notion.RichTexts) {
-	if len(rts) == 0 {
+func addCaption(n ast.Node, rts *notion.RichTexts) {
+	if rts == nil || len(*rts) == 0 {
 		return
 	}
 
 	caption := &n_ast.Caption{}
-	appendCommon(caption, rts, nil)
+
+	for _, child := range toNodeRichTexts(*rts) {
+		caption.AppendChild(caption, child)
+	}
+
 	setParentChild(n, caption)
 }

@@ -34,12 +34,12 @@ const (
 )
 
 // NewFile returns a new file node
-func NewFile(f notion.File, tp FileType) ast.Node {
+func NewFile(f notion.FileWithCaption, tp FileType) *File {
 	n := &File{}
 	switch f.Type {
-	case notion.FileTypeFile:
+	case notion.FileWithCaptionTypeExternal:
 		n.Expires = f.File.ExpiryTime
-	case notion.FileTypeExternal:
+	case notion.FileWithCaptionTypeFile:
 		n.External = true
 	}
 
@@ -51,6 +51,19 @@ func NewFile(f notion.File, tp FileType) ast.Node {
 	} else {
 		n.AppendChild(n, link)
 	}
+
+	if f.Caption == nil || len(*f.Caption) == 0 {
+		return n
+	}
+
+	caption := &Caption{}
+
+	// TODO
+	// for _, child := range toNodeRichTexts(*f.Caption) {
+	// 	caption.AppendChild(caption, child)
+	// }
+
+	n.AppendChild(n, caption)
 
 	return n
 }

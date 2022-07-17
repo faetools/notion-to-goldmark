@@ -1,6 +1,9 @@
 package goldmark
 
 import (
+	"context"
+
+	"github.com/faetools/go-notion/pkg/docs"
 	"github.com/faetools/go-notion/pkg/notion"
 	n_ast "github.com/faetools/notion-to-goldmark/ast"
 	"github.com/yuin/goldmark/ast"
@@ -8,32 +11,43 @@ import (
 )
 
 // FromBlocks returns the goldmark nodes of the notion blocks.
-func FromBlocks(bs notion.Blocks) []ast.Node {
+func FromBlocks(ctx context.Context, g notion.Getter, id notion.Id) ([]ast.Node, error) {
 	c := &nodeCollector{}
-	c.collectBlocks(bs)
-	return c.result()
+
+	v := docs.NewVisitor(g,
+		func(p *notion.Page) error { return nil },
+		func(blocks notion.Blocks) error {
+			for _, b := range blocks {
+				c.collectBlock(b)
+			}
+
+			if c.list != nil {
+				c.res = append(c.res, c.list)
+			}
+
+			return nil
+		},
+		func(db *notion.Database) error { return nil },
+		nil)
+
+	if err := docs.Walk(ctx, v, docs.TypeBlocks, id); err != nil {
+		return nil, err
+	}
+
+	return c.collectBlocks(ctx, id)
 }
 
 type nodeCollector struct {
 	list *ast.List
 	res  []ast.Node
-
-	cli *notion.Client // TODO: get children automatically ...
-	err error          // TODO: ... and record any errors
 }
 
-func (c nodeCollector) result() []ast.Node {
+func (c *nodeCollector) collectBlocks(ctx context.Context, id notion.Id) ([]ast.Node, error) {
 	if c.list != nil {
-		return append(c.res, c.list)
+		return append(c.res, c.list), nil
 	}
 
-	return c.res
-}
-
-func (c *nodeCollector) collectBlocks(bs notion.Blocks) {
-	for _, b := range bs {
-		c.collectBlock(b)
-	}
+	return c.res, nil
 }
 
 func (c *nodeCollector) getList(ordered bool) *ast.List {
@@ -142,7 +156,7 @@ func (c *nodeCollector) toNode(b notion.Block) ast.Node {
 func toNodeBookmark(b *notion.Bookmark) ast.Node {
 	n := &n_ast.Bookmark{URL: b.Url}
 
-	addCaption(n, b.Caption)
+	addCaption(n, &b.Caption)
 
 	return n
 }
@@ -160,7 +174,8 @@ func toNodeText(t *notion.Text) ast.Node {
 func toNodeListItem(item *notion.ListItem) ast.Node {
 	n := ast.NewListItem(0)
 
-	appendCommon(n, item.RichText, item.Children)
+	// TODO
+	// appendCommon(n, item.RichText, item.Children)
 
 	return wrapInColor(item.Color, n)
 }
@@ -168,7 +183,8 @@ func toNodeListItem(item *notion.ListItem) ast.Node {
 func toNodeCallout(callout *notion.Callout) ast.Node {
 	n := n_ast.NewCallout(callout.Icon)
 
-	appendCommon(n, callout.RichText, callout.Children)
+	// TODO
+	// appendCommon(n, callout.RichText, callout.Children)
 
 	return wrapInColor(callout.Color, n)
 }
@@ -180,29 +196,30 @@ func toNodeChildDatabase(db *notion.Child) ast.Node {
 func toNodeTable(table *notion.Table) ast.Node {
 	n := extast.NewTable()
 
-	for i, r := range table.Children {
-		row := extast.NewTableRow(nil)
+	// TODO
+	// for i, r := range table.Children {
+	// 	row := extast.NewTableRow(nil)
 
-		// NOTE: len(r.TableRow.Cells) == table.TableWidth
+	// 	// NOTE: len(r.TableRow.Cells) == table.TableWidth
 
-		for i, cellContent := range r.TableRow.Cells {
-			cell := extast.NewTableCell()
+	// 	for i, cellContent := range r.TableRow.Cells {
+	// 		cell := extast.NewTableCell()
 
-			if i == 0 && table.HasColumnHeader {
-				cell.SetAttributeString("header", true)
-			}
+	// 		if i == 0 && table.HasColumnHeader {
+	// 			cell.SetAttributeString("header", true)
+	// 		}
 
-			appendCommon(cell, cellContent, nil)
+	// 		appendCommon(cell, cellContent, nil)
 
-			row.AppendChild(row, cell)
-		}
+	// 		row.AppendChild(row, cell)
+	// 	}
 
-		if i == 0 && table.HasRowHeader {
-			n.AppendChild(n, extast.NewTableHeader(row))
-		} else {
-			n.AppendChild(n, row)
-		}
-	}
+	// 	if i == 0 && table.HasRowHeader {
+	// 		n.AppendChild(n, extast.NewTableHeader(row))
+	// 	} else {
+	// 		n.AppendChild(n, row)
+	// 	}
+	// }
 
 	return n
 }
@@ -215,7 +232,7 @@ func toNodeEmbed(embed *notion.Embed) ast.Node {
 
 	n.AppendChild(n, link)
 
-	addCaption(n, embed.Caption)
+	addCaption(n, &embed.Caption)
 
 	return n
 }
@@ -232,6 +249,14 @@ func toNodeHeading(h *notion.Heading, level int) ast.Node {
 	return wrapInColor(h.Color, n)
 }
 
+func appendCommon(n ast.Node, rts notion.RichTexts, children notion.Blocks) {
+	for _, child := range toNodeRichTexts(rts) {
+		n.AppendChild(n, child)
+	}
+
+	addBlockChildren(n, children)
+}
+
 func toNodeLinkPreview(pr *notion.LinkPreview) ast.Node {
 	n := &n_ast.LinkPreview{}
 
@@ -245,7 +270,8 @@ func toNodeLinkPreview(pr *notion.LinkPreview) ast.Node {
 func toNodeParagraph(p *notion.Paragraph) ast.Node {
 	n := ast.NewParagraph()
 
-	appendCommon(n, p.RichText, p.Children)
+	// TODO
+	// appendCommon(n, p.RichText, p.Children)
 
 	return wrapInColor(p.Color, n)
 }
@@ -253,7 +279,8 @@ func toNodeParagraph(p *notion.Paragraph) ast.Node {
 func toNodeQuote(q *notion.Quote) ast.Node {
 	n := ast.NewBlockquote()
 
-	appendCommon(n, q.RichText, q.Children)
+	// TODO
+	// appendCommon(n, q.RichText, q.Children)
 
 	return wrapInColor(q.Color, n)
 }
@@ -261,19 +288,21 @@ func toNodeQuote(q *notion.Quote) ast.Node {
 func toNodeSyncedBlock(b *notion.SyncedBlock) ast.Node {
 	n := n_ast.NewSyncedBlock()
 
-	addBlockChildren(n, b.Children)
+	// TODO
+	// addBlockChildren(n, b.Children)
 
 	return n
 }
 
 func toNodeTableOfContents(toc *notion.TableOfContents) ast.Node {
-	return wrapInColor(*toc.Color, &n_ast.TableOfContents{})
+	return wrapInColor(toc.Color, &n_ast.TableOfContents{})
 }
 
 func toNodeToDo(todo *notion.ToDo) ast.Node {
 	n := extast.NewTaskCheckBox(todo.Checked)
 
-	appendCommon(n, todo.RichText, todo.Children)
+	// TODO
+	// appendCommon(n, todo.RichText, todo.Children)
 
 	return wrapInColor(todo.Color, n)
 }
@@ -281,7 +310,8 @@ func toNodeToDo(todo *notion.ToDo) ast.Node {
 func toNodeToggle(t *notion.Toggle) ast.Node {
 	n := &n_ast.Toggle{}
 
-	appendCommon(n, t.RichText, t.Children)
+	// TODO
+	// appendCommon(n, t.RichText, t.Children)
 
 	return wrapInColor(t.Color, n)
 }
@@ -289,14 +319,16 @@ func toNodeToggle(t *notion.Toggle) ast.Node {
 func toNodeVideo(v *notion.Video) ast.Node {
 	n := &n_ast.Video{}
 
-	n.AppendChild(n, n_ast.NewFile(notion.File{
+	// TODO can notion.Video be notion.FileWithCaption from the beginning?
+	n.AppendChild(n, n_ast.NewFile(notion.FileWithCaption{
 		External: v.External,
 		File:     v.File,
-		Type:     notion.FileType(v.Type),
+		Type:     notion.FileWithCaptionType(v.Type),
+		Caption:  v.Caption,
 	}, n_ast.FileTypeVideo))
 
 	if v.Caption != nil {
-		addCaption(n, *v.Caption)
+		addCaption(n, v.Caption)
 	}
 
 	return n

@@ -33,7 +33,11 @@ func (n *Mention) Dump(source []byte, level int) {
 	case notion.MentionTypePage:
 		kv["Page ID"] = string(m.Page.Id)
 	case notion.MentionTypeUser:
-		kv["User"] = m.User.Name
+		kv["User ID"] = string(m.User.Id)
+
+		if name := m.User.Name; name != nil {
+			kv["User"] = *name
+		}
 	}
 
 	ast.DumpHelper(n, source, level, kv, nil)

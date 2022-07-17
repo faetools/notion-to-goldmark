@@ -5,8 +5,9 @@ github.com/deepmap/oapi-codegen/pkg/types
 # github.com/faetools/client v0.0.0-20220318211513-a9b944e5b437
 ## explicit; go 1.17
 github.com/faetools/client
-# github.com/faetools/go-notion v0.0.19
+# github.com/faetools/go-notion v0.0.24
 ## explicit; go 1.18
+github.com/faetools/go-notion/pkg/docs
 github.com/faetools/go-notion/pkg/notion
 # github.com/google/uuid v1.3.0
 ## explicit

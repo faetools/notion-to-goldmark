@@ -1,5 +1,29 @@
 package notion
 
+import "encoding/json"
+
+type propertyValue PropertyValue
+
+type propertyValueDate struct {
+	ID   string       `json:"id"`
+	Type PropertyType `json:"type"`
+	Date *Date        `json:"date"`
+}
+
+// MarshalJSON fulfils json.Marshaler.
+func (v PropertyValue) MarshalJSON() ([]byte, error) {
+	switch v.Type {
+	case PropertyTypeDate:
+		return json.Marshal(propertyValueDate{
+			ID:   v.Id,
+			Type: v.Type,
+			Date: v.Date,
+		})
+	default:
+		return json.Marshal(propertyValue(v))
+	}
+}
+
 // GetMultiSelect returns the multiselect value.
 func (v PropertyValue) GetMultiSelect() PropertyOptions {
 	if v.MultiSelect == nil {

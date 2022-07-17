@@ -22,7 +22,7 @@ func (t RichText) Content() string {
 	case RichTextTypeText:
 		return t.Text.Content
 	case RichTextTypeMention:
-		return fmt.Sprintf("%#v", *t.Mention)
+		return fmt.Sprintf("<mention of %s %s>", t.Mention.Type, t.Mention.ID())
 	case RichTextTypeEquation:
 		return fmt.Sprintf("%#v", *t.Equation)
 	default:

@@ -11,10 +11,10 @@ import (
 )
 
 // FromBlocks returns the goldmark nodes of the notion blocks.
-func FromBlocks(ctx context.Context, g notion.Getter, id notion.Id) ([]ast.Node, error) {
+func FromBlocks(ctx context.Context, cli notion.Getter, id notion.Id) ([]ast.Node, error) {
 	c := &nodeCollector{}
 
-	v := docs.NewVisitor(g,
+	v := docs.NewVisitor(cli,
 		func(p *notion.Page) error { return nil },
 		func(blocks notion.Blocks) error {
 			for _, b := range blocks {

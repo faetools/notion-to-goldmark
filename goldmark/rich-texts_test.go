@@ -1,12 +1,12 @@
 package goldmark
 
 import (
-	"fmt"
+	"encoding/json"
 	"testing"
 
 	"github.com/faetools/go-notion/pkg/notion"
+	"github.com/stretchr/testify/assert"
 	"github.com/yuin/goldmark/ast"
-	"gopkg.in/go-playground/assert.v1"
 )
 
 func richText(content string, bold, italic bool) notion.RichText {
@@ -42,9 +42,8 @@ const t1, t2, t3 = "foo", "bar", "blub"
 func TestRichTexts(t *testing.T) {
 	t.Parallel()
 
-	assert.PanicMatches(t,
-		func() { _ = toNodeRichTextWithoutAnnotations(notion.RichText{}) },
-		"invalid RichText of type ")
+	assert.PanicsWithValue(t, `invalid RichText of type ""`,
+		func() { _ = toNodeRichTextWithoutAnnotations(notion.RichText{}) })
 
 	assert.Equal(t, newString("foo"), toNodeRichTextWithoutAnnotations(richText("foo", true, true)))
 
@@ -125,16 +124,9 @@ func TestRichTexts(t *testing.T) {
 	} {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
-			// t.Parallel()
-			fmt.Printf("Running %v...\n", tt.name)
+			t.Parallel()
 
 			ns := toNodeRichTexts(tt.rts)
-			for _, n := range ns {
-				n.Dump(nil, 0)
-			}
-
-			fmt.Println("---")
-
 			assert.Equal(t, tt.res, ns)
 		})
 
@@ -144,3 +136,101 @@ func TestRichTexts(t *testing.T) {
 	// - n1(bold, italic), n2(italic), n3(bold, italic) -> italic{bold{n1}, n2, bold{n3}}
 	// - n1(bold), n2(bold, italic), n3(italic) -> bold{n1, italic{n2}}, italic{n3}
 }
+
+func TestTricky(t *testing.T) {
+	t.Parallel()
+
+	rts := notion.RichTexts{}
+	assert.NoError(t, json.Unmarshal([]byte(tricky), &rts))
+
+	// TODO continue here
+	_ = toNodeRichTexts(rts)
+}
+
+const tricky = `[
+          {
+            "type": "text",
+            "text": {
+              "content": "This ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "This ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "is",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": true,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "purple"
+            },
+            "plain_text": "is",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " a big ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "purple"
+            },
+            "plain_text": " a big ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "heading",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "purple"
+            },
+            "plain_text": "heading",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": " 1",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": " 1",
+            "href": null
+          }
+        ]`

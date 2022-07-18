@@ -1,9 +1,13 @@
 package goldmark_test
 
 import (
+	"context"
 	"testing"
 
+	"github.com/faetools/go-notion/pkg/fake"
 	"github.com/faetools/go-notion/pkg/notion"
+	"github.com/faetools/notion-to-goldmark/goldmark"
+	"github.com/stretchr/testify/assert"
 )
 
 func paragraphBlock(p *notion.Paragraph) notion.Block {
@@ -95,4 +99,21 @@ func TestMarkdown(t *testing.T) {
 
 	// Mark Rösler is a great guy.
 	// `, string(b))
+}
+
+func TestTransform(t *testing.T) {
+	t.Parallel()
+	ctx := context.Background()
+
+	t.Skip()
+
+	cli, fs, err := fake.NewClient()
+	assert.NoError(t, err)
+
+	assert.PanicsWithValue(t, "invalid memory address or nil pointer dereference", func() {
+		_, err = goldmark.FromBlocks(ctx, cli, fake.PageID)
+		assert.NoError(t, err)
+	})
+
+	assert.Len(t, fs.Unseen(), 30)
 }

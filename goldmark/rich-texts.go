@@ -1,6 +1,8 @@
 package goldmark
 
 import (
+	"fmt"
+
 	n_ast "github.com/faetools/notion-to-goldmark/ast"
 
 	"github.com/faetools/go-notion/pkg/notion"
@@ -21,7 +23,7 @@ func toNodeRichTextWithoutAnnotations(t notion.RichText) ast.Node {
 	case notion.RichTextTypeMention:
 		return &n_ast.Mention{Content: t.Mention}
 	default:
-		panic("invalid RichText of type " + t.Type)
+		panic(fmt.Sprintf("invalid RichText of type %q", t.Type))
 	}
 }
 
@@ -276,8 +278,20 @@ func (w *annotationWrapper) toNode() ast.Node {
 
 	n := w.ann.node()
 
+	doPanic := n == nil
+
 	for _, sub := range w.subs {
+		if doPanic {
+			// TODO
+			sub.toNode().Dump(nil, 0)
+			continue
+		}
+
 		n.AppendChild(n, sub.toNode())
+	}
+
+	if doPanic {
+		panic("aaaaaa!")
 	}
 
 	return n

@@ -1,24 +1,27 @@
 package goldmark
 
 import (
-	"encoding/json"
 	"testing"
 
 	"github.com/faetools/go-notion/pkg/notion"
+	n_ast "github.com/faetools/notion-to-goldmark/ast"
 	"github.com/stretchr/testify/assert"
 	"github.com/yuin/goldmark/ast"
 )
 
+func richTextWithColor(content string, bold, italic bool, color notion.Color) notion.RichText {
+	rt := richText(content, bold, italic)
+	rt.Annotations.Color = color
+
+	return rt
+}
+
 func richText(content string, bold, italic bool) notion.RichText {
-	return notion.RichText{
-		Type: notion.RichTextTypeText,
-		Text: &notion.Text{Content: content},
-		Annotations: notion.Annotations{
-			Bold:   bold,
-			Italic: italic,
-			Color:  notion.ColorDefault,
-		},
-	}
+	rt := notion.NewRichText(content)
+	rt.Annotations.Bold = bold
+	rt.Annotations.Italic = italic
+
+	return rt
 }
 
 func bold(nodes ...ast.Node) ast.Node {
@@ -27,6 +30,10 @@ func bold(nodes ...ast.Node) ast.Node {
 
 func italic(nodes ...ast.Node) ast.Node {
 	return wrap(ast.NewEmphasis(1), nodes...)
+}
+
+func color(c notion.Color, nodes ...ast.Node) ast.Node {
+	return wrap(&n_ast.Color{Color: c}, nodes...)
 }
 
 func wrap(n ast.Node, nodes ...ast.Node) ast.Node {
@@ -121,6 +128,17 @@ func TestRichTexts(t *testing.T) {
 				),
 			},
 		},
+		{
+			"n1,n2(bold)-> n1,bold{n2}",
+			notion.RichTexts{
+				richText(t1, false, false),
+				richText(t2, true, false),
+			},
+			[]ast.Node{
+				newString(t1),
+				bold(newString(t2)),
+			},
+		},
 	} {
 		tt := tt
 		t.Run(tt.name, func(t *testing.T) {
@@ -135,102 +153,27 @@ func TestRichTexts(t *testing.T) {
 	// we want to wrap the nodes
 	// - n1(bold, italic), n2(italic), n3(bold, italic) -> italic{bold{n1}, n2, bold{n3}}
 	// - n1(bold), n2(bold, italic), n3(italic) -> bold{n1, italic{n2}}, italic{n3}
+	// - n1, n2(bold), -> n1, bold{n2}
 }
 
-func TestTricky(t *testing.T) {
+func TestRichTexts_FromExamplePage(t *testing.T) {
 	t.Parallel()
 
-	rts := notion.RichTexts{}
-	assert.NoError(t, json.Unmarshal([]byte(tricky), &rts))
+	ns := toNodeRichTexts(notion.RichTexts{
+		notion.NewRichText("This "),
+		richTextWithColor("is", false, true, notion.ColorPurple),
+		richTextWithColor(" a big ", false, false, notion.ColorPurple),
+		richTextWithColor("heading", true, false, notion.ColorPurple),
+		notion.NewRichText(" 1"),
+	})
 
-	// TODO continue here
-	_ = toNodeRichTexts(rts)
+	assert.Equal(t, []ast.Node{
+		newString("This "),
+		color(notion.ColorPurple,
+			italic(newString("is")),
+			newString(" a big "),
+			bold(newString("heading")),
+		),
+		newString(" 1"),
+	}, ns)
 }
-
-const tricky = `[
-          {
-            "type": "text",
-            "text": {
-              "content": "This ",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": "This ",
-            "href": null
-          },
-          {
-            "type": "text",
-            "text": {
-              "content": "is",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": true,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "purple"
-            },
-            "plain_text": "is",
-            "href": null
-          },
-          {
-            "type": "text",
-            "text": {
-              "content": " a big ",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "purple"
-            },
-            "plain_text": " a big ",
-            "href": null
-          },
-          {
-            "type": "text",
-            "text": {
-              "content": "heading",
-              "link": null
-            },
-            "annotations": {
-              "bold": true,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "purple"
-            },
-            "plain_text": "heading",
-            "href": null
-          },
-          {
-            "type": "text",
-            "text": {
-              "content": " 1",
-              "link": null
-            },
-            "annotations": {
-              "bold": false,
-              "italic": false,
-              "strikethrough": false,
-              "underline": false,
-              "code": false,
-              "color": "default"
-            },
-            "plain_text": " 1",
-            "href": null
-          }
-        ]`

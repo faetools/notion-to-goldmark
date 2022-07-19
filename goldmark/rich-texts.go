@@ -81,23 +81,13 @@ func toNodeRichTexts(rts notion.RichTexts) (ns []ast.Node) {
 
 	for i, rt := range rts {
 		n := toNodeRichTextWithoutAnnotations(rt)
-		ann := annotations(rt.Annotations)
-
-		if ann.node() == nil {
-			// pure node
-			ws[i] = &annotationWrapper{node: n}
-		} else {
-			// a wrapper with all annotations, wrapping the node
-			ws[i] = &annotationWrapper{ann: ann, subs: annotationWrappers{{node: n}}}
-		}
+		ws[i] = &annotationWrapper{node: n, ann: annotations(rt.Annotations)}
 	}
 
 	// merge siblings that have the same annotation
 	ws = ws.mergeSiblings()
 
-	// wrap wrappers until each wrapper has either a node or just one annotation
-	ws.wrapSelves()
-
+	// transform each wrapper into a node
 	return ws.toNodes()
 }
 
@@ -131,7 +121,8 @@ func mergeIfSameAnnotation(w1, w2 *annotationWrapper) *annotationWrapper {
 
 	switch w1.ann.Color {
 	case notion.ColorDefault, "": // no color, ignore
-	case w2.ann.Color:
+	case w2.ann.Color: // same color
+		ann.Color = w1.ann.Color
 		w1.ann.Color = notion.ColorDefault
 		w2.ann.Color = notion.ColorDefault
 
@@ -145,22 +136,18 @@ func mergeIfSameAnnotation(w1, w2 *annotationWrapper) *annotationWrapper {
 }
 
 // merge merges two wrappers so they can form the subwrappers to a new wrapper
-func merge(ws ...*annotationWrapper) annotationWrappers {
+func merge(w1, w2 *annotationWrapper) annotationWrappers {
 	// make sure all wrappers contain either node or annotation
-	subs := make(annotationWrappers, 0, len(ws))
+	subs := make(annotationWrappers, 0, 2)
 
-	for _, w := range ws {
-		if w.ann.node() != nil {
+	for _, w := range []*annotationWrapper{w1, w2} {
+		if w.ann.node() != nil || w.node != nil {
 			// w has annotation information
 			subs = append(subs, w)
 			continue
 		}
 
-		// if len(w.subs) == 0 || w.node != nil {
-		// 	panic("something went wrong")
-		// }
-
-		// w is empty wrapper
+		// w is just a wrapper
 		subs = append(subs, w.subs...)
 	}
 
@@ -172,7 +159,6 @@ func remove[T any](collection []T, i int) []T {
 	copy(collection[i:], collection[i+1:])
 
 	end := len(collection) - 1
-
 	var zero T
 	collection[end] = zero
 
@@ -193,74 +179,6 @@ func (ws annotationWrappers) mergeSiblings() annotationWrappers {
 	return ws
 }
 
-// wrapSelves calls wrapSelf on all elements
-func (ws annotationWrappers) wrapSelves() {
-	for _, w := range ws {
-		w.wrapSelf()
-	}
-}
-
-func (w *annotationWrapper) wrap(child *annotationWrapper) {
-	if w.node == nil && w.ann.node() == nil {
-		// parent would be empty wrapper
-		w.ann = child.ann
-		return
-	}
-
-	child.subs = w.subs
-	w.subs = annotationWrappers{child}
-}
-
-// wrapSelf wraps this wrapper in another wrapper for each annotation
-// so that each wrapper only has one annotation
-func (w *annotationWrapper) wrapSelf() {
-	w.subs.wrapSelves()
-
-	if w.ann.Bold {
-		w.ann.Bold = false
-		w.wrap(&annotationWrapper{
-			ann: annotations{Bold: true},
-		})
-	}
-
-	if w.ann.Italic {
-		w.ann.Italic = false
-		w.wrap(&annotationWrapper{
-			ann: annotations{Italic: true},
-		})
-	}
-
-	if w.ann.Code {
-		w.ann.Code = false
-		w.wrap(&annotationWrapper{
-			ann: annotations{Code: true},
-		})
-	}
-
-	if w.ann.Strikethrough {
-		w.ann.Strikethrough = false
-		w.wrap(&annotationWrapper{
-			ann: annotations{Strikethrough: true},
-		})
-	}
-
-	if w.ann.Underline {
-		w.ann.Underline = false
-		w.wrap(&annotationWrapper{
-			ann: annotations{Underline: true},
-		})
-	}
-
-	if w.ann.Color != notion.ColorDefault &&
-		w.ann.Color != "" {
-		w.ann.Color = notion.ColorDefault
-
-		w.wrap(&annotationWrapper{
-			ann: annotations{Color: w.ann.Color},
-		})
-	}
-}
-
 func (ws annotationWrappers) toNodes() []ast.Node {
 	out := make([]ast.Node, len(ws))
 
@@ -271,27 +189,46 @@ func (ws annotationWrappers) toNodes() []ast.Node {
 	return out
 }
 
+func (a annotations) wrap(n ast.Node) ast.Node {
+	var w ast.Node
+
+	switch {
+	case a.Bold:
+		a.Bold = false
+		w = ast.NewEmphasis(2)
+	case a.Italic:
+		a.Italic = false
+		w = ast.NewEmphasis(1)
+	case a.Underline:
+		a.Underline = false
+		w = ast.NewEmphasis(3)
+	case a.Strikethrough:
+		a.Strikethrough = false
+		w = extast.NewStrikethrough()
+	case a.Code:
+		a.Code = false
+		w = ast.NewCodeSpan()
+	case a.Color != notion.ColorDefault && a.Color != "":
+		a.Color = notion.ColorDefault
+		w = &n_ast.Color{Color: a.Color}
+	default:
+		return n
+	}
+
+	w.AppendChild(w, n)
+
+	return a.wrap(w) // call recursively
+}
+
 func (w *annotationWrapper) toNode() ast.Node {
 	if w.node != nil {
-		return w.node
+		return w.ann.wrap(w.node)
 	}
 
 	n := w.ann.node()
 
-	doPanic := n == nil
-
 	for _, sub := range w.subs {
-		if doPanic {
-			// TODO
-			sub.toNode().Dump(nil, 0)
-			continue
-		}
-
 		n.AppendChild(n, sub.toNode())
-	}
-
-	if doPanic {
-		panic("aaaaaa!")
 	}
 
 	return n

@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/faetools/go-notion v0.0.24
+	github.com/samber/lo v1.25.0
 	github.com/stretchr/testify v1.7.2
 	github.com/tj/assert v0.0.0-20171129193455-018094318fb0
 	github.com/yuin/goldmark v1.4.13
@@ -45,6 +46,7 @@ require (
 	github.com/tdewolff/parse/v2 v2.5.27 // indirect
 	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/yuin/goldmark-meta v1.1.0 // indirect
+	golang.org/x/exp v0.0.0-20220303212507-bbda1eaf7a17 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20220704084225-05e143d24a9e // indirect

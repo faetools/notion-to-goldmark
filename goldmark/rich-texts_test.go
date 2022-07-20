@@ -50,15 +50,18 @@ func TestRichTexts(t *testing.T) {
 	t.Parallel()
 
 	assert.PanicsWithValue(t, `invalid RichText of type ""`,
-		func() { _ = toNodeRichTextWithoutAnnotations(notion.RichText{}) })
-
-	assert.Equal(t, newString("foo"), toNodeRichTextWithoutAnnotations(richText("foo", true, true)))
+		func() { _ = newAnnotationWrapper(notion.RichText{}) })
 
 	for _, tt := range []struct {
 		name string
 		rts  notion.RichTexts
 		res  []ast.Node
 	}{
+		{
+			"n1->n1",
+			notion.RichTexts{richText(t1, false, false)},
+			[]ast.Node{newString(t1)},
+		},
 		{
 			"n1,n2,n3->n1,n2,n3",
 			notion.RichTexts{

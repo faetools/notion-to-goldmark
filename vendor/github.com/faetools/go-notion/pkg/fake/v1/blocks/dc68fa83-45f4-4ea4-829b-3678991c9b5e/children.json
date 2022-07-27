@@ -1,0 +1,52 @@
+{
+  "object": "list",
+  "results": [
+    {
+      "object": "block",
+      "id": "57ae714e-3a16-4b33-be73-239408e44f3c",
+      "parent": {
+        "type": "block_id",
+        "block_id": "dc68fa83-45f4-4ea4-829b-3678991c9b5e"
+      },
+      "created_time": "2022-07-25T13:29:00.000Z",
+      "last_edited_time": "2022-07-25T13:30:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+      },
+      "has_children": true,
+      "archived": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "subsubsublist",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "subsubsublist",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    }
+  ],
+  "next_cursor": null,
+  "has_more": false,
+  "type": "block",
+  "block": {}
+}

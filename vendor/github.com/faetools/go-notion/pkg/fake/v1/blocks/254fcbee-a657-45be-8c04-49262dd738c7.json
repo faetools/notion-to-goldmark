@@ -1,0 +1,65 @@
+{
+  "object": "block",
+  "id": "254fcbee-a657-45be-8c04-49262dd738c7",
+  "parent": {
+    "type": "block_id",
+    "block_id": "edf66def-c7ba-4945-8eac-15a6f77ffc98"
+  },
+  "created_time": "2022-07-14T18:34:00.000Z",
+  "last_edited_time": "2022-07-14T18:38:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "table_row",
+  "table_row": {
+    "cells": [
+      [
+        {
+          "type": "text",
+          "text": {
+            "content": "Person",
+            "link": {
+              "url": "https://de.wiktionary.org/wiki/sein"
+            }
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Person",
+          "href": "https://de.wiktionary.org/wiki/sein"
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": {
+            "content": "Wortform",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "Wortform",
+          "href": null
+        }
+      ]
+    ]
+  }
+}

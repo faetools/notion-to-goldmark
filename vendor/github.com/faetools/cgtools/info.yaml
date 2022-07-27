@@ -1,0 +1,7 @@
+name: cgtools
+version: 0.0.4
+repoType: GoLibrary
+library:
+  subType: Other
+team: firestarters
+devToolVersion: 0.0.18

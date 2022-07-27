@@ -1,0 +1,29 @@
+{
+  "object": "block",
+  "id": "a95ecf46-05b6-4dc1-bc61-b79651767c75",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T18:14:00.000Z",
+  "last_edited_time": "2022-07-14T18:14:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "video",
+  "video": {
+    "caption": [],
+    "type": "file",
+    "file": {
+      "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1162837c-64dd-401a-aa1d-91f795079052/small.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220727%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220727T190159Z&X-Amz-Expires=3600&X-Amz-Signature=b73dfe16c6bbfe534ff3dcc4518ce30013ffa87a39042ca2154085fd7f3e69f0&X-Amz-SignedHeaders=host&x-id=GetObject",
+      "expiry_time": "2022-07-27T20:01:59.038Z"
+    }
+  }
+}

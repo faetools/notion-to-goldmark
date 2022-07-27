@@ -1,0 +1,280 @@
+{
+  "object": "page",
+  "id": "5f17fb6b-2318-4521-b83d-c0f5438abd0b",
+  "created_time": "2022-07-14T18:03:00.000Z",
+  "last_edited_time": "2022-07-22T17:21:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "cover": null,
+  "icon": null,
+  "parent": {
+    "type": "database_id",
+    "database_id": "7a3c647e-4c1e-4c27-bf1d-cfb0105e55ce"
+  },
+  "archived": false,
+  "properties": {
+    "formula number": {
+      "id": "%3DuTh",
+      "type": "formula",
+      "formula": {
+        "type": "number",
+        "number": 32.7
+      }
+    },
+    "count of relations": {
+      "id": "%40ft%3F",
+      "type": "rollup",
+      "rollup": {
+        "type": "number",
+        "number": 1,
+        "function": "count"
+      }
+    },
+    "equal relations": {
+      "id": "ASTz",
+      "type": "formula",
+      "formula": {
+        "type": "number",
+        "number": 0
+      }
+    },
+    "A number": {
+      "id": "CQUf",
+      "type": "number",
+      "number": 32.7
+    },
+    "Property checkbox": {
+      "id": "C%5EC%3A",
+      "type": "formula",
+      "formula": {
+        "type": "boolean",
+        "boolean": false
+      }
+    },
+    "Equal relation": {
+      "id": "EUgY",
+      "type": "relation",
+      "relation": [
+        {
+          "id": "c85a6329-44c0-4a8f-98d4-0ddd0e756b10"
+        }
+      ]
+    },
+    "My checkbox": {
+      "id": "JuTz",
+      "type": "checkbox",
+      "checkbox": false
+    },
+    "files": {
+      "id": "KXdF",
+      "type": "files",
+      "files": []
+    },
+    "when it was created": {
+      "id": "NeE%60",
+      "type": "created_time",
+      "created_time": "2022-07-14T18:03:00.000Z"
+    },
+    "Property": {
+      "id": "RYYU",
+      "type": "phone_number",
+      "phone_number": null
+    },
+    "contact": {
+      "id": "TWA%3B",
+      "type": "email",
+      "email": "info@authenticgermanlearning.com"
+    },
+    "Top": {
+      "id": "UtGj",
+      "type": "relation",
+      "relation": [
+        {
+          "id": "c85a6329-44c0-4a8f-98d4-0ddd0e756b10"
+        },
+        {
+          "id": "45d81ac0-bf71-4a31-b096-941dd050f3e1"
+        }
+      ]
+    },
+    "tags": {
+      "id": "UuqS",
+      "type": "multi_select",
+      "multi_select": [
+        {
+          "id": "a013f196-72c4-44bd-b40d-1acbf65249c3",
+          "name": "tag 2",
+          "color": "red"
+        }
+      ]
+    },
+    "Sub": {
+      "id": "VN%3AD",
+      "type": "relation",
+      "relation": []
+    },
+    "formula": {
+      "id": "XJ%3Dc",
+      "type": "formula",
+      "formula": {
+        "type": "string",
+        "string": "yes"
+      }
+    },
+    "people": {
+      "id": "%60cG%5E",
+      "type": "people",
+      "people": []
+    },
+    "rollup date": {
+      "id": "czmt",
+      "type": "rollup",
+      "rollup": {
+        "type": "array",
+        "array": [
+          {
+            "type": "date",
+            "date": null
+          }
+        ],
+        "function": "show_unique"
+      }
+    },
+    "who last edited it": {
+      "id": "eszR",
+      "type": "last_edited_by",
+      "last_edited_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+        "name": "Mark Rösler",
+        "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+        "type": "person",
+        "person": {
+          "email": "mark@faetools.com"
+        }
+      }
+    },
+    "select": {
+      "id": "hiMX",
+      "type": "select",
+      "select": {
+        "id": "[;Jv",
+        "name": "bar",
+        "color": "blue"
+      }
+    },
+    "date formula": {
+      "id": "jWgQ",
+      "type": "formula",
+      "formula": {
+        "type": "date",
+        "date": {
+          "start": "2022-08-05T16:00:00.000+02:00",
+          "end": "2022-08-12T03:00:00.000+02:00",
+          "time_zone": null
+        }
+      }
+    },
+    "rollup string": {
+      "id": "kSwR",
+      "type": "rollup",
+      "rollup": {
+        "type": "array",
+        "array": [
+          {
+            "type": "title",
+            "title": []
+          }
+        ],
+        "function": "show_unique"
+      }
+    },
+    "yes or no?": {
+      "id": "pt%3F%5D",
+      "type": "checkbox",
+      "checkbox": true
+    },
+    "some date": {
+      "id": "uK%60G",
+      "type": "date",
+      "date": {
+        "start": "2022-08-05T16:00:00.000+02:00",
+        "end": "2022-08-12T03:00:00.000+02:00",
+        "time_zone": null
+      }
+    },
+    "Money": {
+      "id": "wtdu",
+      "type": "number",
+      "number": 41.12
+    },
+    "number with commas": {
+      "id": "yUX%3B",
+      "type": "number",
+      "number": 5.7
+    },
+    "meme links": {
+      "id": "z%3BWh",
+      "type": "url",
+      "url": "https://www.wattpad.com/918884959-a-daily-dose-of-wholesome-memes-wholesome-meme-3"
+    },
+    "Some text": {
+      "id": "~FiP",
+      "type": "rich_text",
+      "rich_text": []
+    },
+    "who created it": {
+      "id": "~esH",
+      "type": "created_by",
+      "created_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+        "name": "Mark Rösler",
+        "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+        "type": "person",
+        "person": {
+          "email": "mark@faetools.com"
+        }
+      }
+    },
+    "Status": {
+      "id": "~%7CtN",
+      "type": "status",
+      "status": {
+        "id": "t|{j",
+        "name": "no idea",
+        "color": "gray"
+      }
+    },
+    "Name": {
+      "id": "title",
+      "type": "title",
+      "title": [
+        {
+          "type": "text",
+          "text": {
+            "content": "entry 2",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "entry 2",
+          "href": null
+        }
+      ]
+    }
+  },
+  "url": "https://www.notion.so/entry-2-5f17fb6b23184521b83dc0f5438abd0b"
+}

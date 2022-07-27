@@ -1,0 +1,139 @@
+{
+  "object": "block",
+  "id": "70c9b2d6-6f0b-404c-837a-16bf97bc82fe",
+  "parent": {
+    "type": "block_id",
+    "block_id": "fc47a7bb-75c2-4c7e-964b-60dda237edf5"
+  },
+  "created_time": "2022-07-14T18:35:00.000Z",
+  "last_edited_time": "2022-07-14T18:37:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "table_row",
+  "table_row": {
+    "cells": [
+      [
+        {
+          "type": "text",
+          "text": {
+            "content": "2",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "2",
+          "href": null
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": {
+            "content": "4",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "4",
+          "href": null
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": {
+            "content": "6",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": true,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "6",
+          "href": null
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": {
+            "content": "8",
+            "link": null
+          },
+          "annotations": {
+            "bold": true,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "8",
+          "href": null
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": {
+            "content": "10",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "10",
+          "href": null
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "text": {
+            "content": "12",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "12",
+          "href": null
+        }
+      ]
+    ]
+  }
+}

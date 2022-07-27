@@ -1,0 +1,46 @@
+{
+  "object": "block",
+  "id": "c7cbd11f-bd18-49c3-a630-a06db427a31b",
+  "parent": {
+    "type": "block_id",
+    "block_id": "bc0271a5-5ab2-4a14-ad6c-2e2ecf5c40a0"
+  },
+  "created_time": "2022-07-14T18:09:00.000Z",
+  "last_edited_time": "2022-07-14T18:17:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "image",
+  "image": {
+    "caption": [
+      {
+        "type": "text",
+        "text": {
+          "content": "An embedded picture.",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "An embedded picture.",
+        "href": null
+      }
+    ],
+    "type": "external",
+    "external": {
+      "url": "https://imgs.search.brave.com/RfiTLs3-DjJ2NVwmCNL1x6UaARTeuBz05wPYZUi5Zv8/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9pbnNw/aXJhdGlvbnNlZWsu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDE2LzAyL0N1dGUt/RG9nLVBob3RvLmpw/Zw"
+    }
+  }
+}

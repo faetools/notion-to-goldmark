@@ -1,0 +1,76 @@
+{
+  "object": "block",
+  "id": "a310fbc6-aa14-4c88-bdf4-5bf939b0b69b",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T18:18:00.000Z",
+  "last_edited_time": "2022-07-14T18:33:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "paragraph",
+  "paragraph": {
+    "rich_text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "Euler’s identity (",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "Euler’s identity (",
+        "href": null
+      },
+      {
+        "type": "equation",
+        "equation": {
+          "expression": "e^{\\pi i}+1=0"
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "e^{\\pi i}+1=0",
+        "href": null
+      },
+      {
+        "type": "text",
+        "text": {
+          "content": ") is shown here inline. Let’s make it bigger:",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": ") is shown here inline. Let’s make it bigger:",
+        "href": null
+      }
+    ],
+    "color": "default"
+  }
+}

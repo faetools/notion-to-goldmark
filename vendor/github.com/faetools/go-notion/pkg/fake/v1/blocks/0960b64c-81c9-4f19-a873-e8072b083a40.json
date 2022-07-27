@@ -1,0 +1,24 @@
+{
+  "object": "block",
+  "id": "0960b64c-81c9-4f19-a873-e8072b083a40",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T18:32:00.000Z",
+  "last_edited_time": "2022-07-14T18:32:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": true,
+  "archived": false,
+  "type": "synced_block",
+  "synced_block": {
+    "synced_from": null
+  }
+}

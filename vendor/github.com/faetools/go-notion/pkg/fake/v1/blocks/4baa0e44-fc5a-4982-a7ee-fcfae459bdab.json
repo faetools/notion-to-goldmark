@@ -1,0 +1,47 @@
+{
+  "object": "block",
+  "id": "4baa0e44-fc5a-4982-a7ee-fcfae459bdab",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T18:09:00.000Z",
+  "last_edited_time": "2022-07-14T18:16:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "pdf",
+  "pdf": {
+    "caption": [
+      {
+        "type": "text",
+        "text": {
+          "content": "Same PDF but uploaded.",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "Same PDF but uploaded.",
+        "href": null
+      }
+    ],
+    "type": "file",
+    "file": {
+      "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/69893027-1bf7-4177-a7b8-06a53dc4d1a6/bitcoin.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220727%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220727T190158Z&X-Amz-Expires=3600&X-Amz-Signature=0a0182cc88aeb5b139e13c651985159bdb8cc1a15bce63ddbc05957427bb94fb&X-Amz-SignedHeaders=host&x-id=GetObject",
+      "expiry_time": "2022-07-27T20:01:58.065Z"
+    }
+  }
+}

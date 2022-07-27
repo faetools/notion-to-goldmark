@@ -1,0 +1,47 @@
+{
+  "object": "block",
+  "id": "41dea905-c733-4c16-af63-ab0160f4c608",
+  "parent": {
+    "type": "block_id",
+    "block_id": "0c996f94-085e-4092-80f6-94e8cca44255"
+  },
+  "created_time": "2022-07-14T18:24:00.000Z",
+  "last_edited_time": "2022-07-14T18:24:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "callout",
+  "callout": {
+    "rich_text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "I don’t have much space!",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "I don’t have much space!",
+        "href": null
+      }
+    ],
+    "icon": {
+      "type": "emoji",
+      "emoji": "😅"
+    },
+    "color": "pink"
+  }
+}

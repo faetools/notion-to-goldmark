@@ -26,26 +26,24 @@ func NewRichText(content string) RichText {
 	}
 }
 
-// GetNames returns names of all selected options.
-func (opts PropertyOptions) GetNames() []string {
-	names := make([]string, len(opts))
+func mapSlice[T, R any](collection []T, iteratee func(T) R) []R {
+	result := make([]R, len(collection))
 
-	for i, sel := range opts {
-		names[i] = sel.Name
+	for i, item := range collection {
+		result[i] = iteratee(item)
 	}
 
-	return names
+	return result
+}
+
+// GetNames returns names of all selected options.
+func (opts PropertyOptions) GetNames() []string {
+	return mapSlice(opts, func(opt PropertyOption) string { return opt.Name })
 }
 
 // GetIDs returns the UUIDs of all references.
 func (refs References) GetIDs() []UUID {
-	ids := make([]UUID, len(refs))
-
-	for i, ref := range refs {
-		ids[i] = ref.Id
-	}
-
-	return ids
+	return mapSlice(refs, func(ref Reference) UUID { return ref.Id })
 }
 
 // URL return the URL of the file.

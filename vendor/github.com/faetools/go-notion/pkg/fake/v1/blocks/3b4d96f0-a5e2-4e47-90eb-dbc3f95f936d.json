@@ -1,0 +1,50 @@
+{
+  "object": "block",
+  "id": "3b4d96f0-a5e2-4e47-90eb-dbc3f95f936d",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T17:52:00.000Z",
+  "last_edited_time": "2022-07-14T17:53:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "callout",
+  "callout": {
+    "rich_text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "Callout with uploaded sparkles.",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "Callout with uploaded sparkles.",
+        "href": null
+      }
+    ],
+    "icon": {
+      "type": "file",
+      "file": {
+        "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/30d8226f-1494-40f3-898c-4683f6e14a38/sparkles_2728.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220727%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220727T190152Z&X-Amz-Expires=3600&X-Amz-Signature=5a04b43eb8689672de1a65638b6a8680295203be19b8b98bb71a02f127b63e58&X-Amz-SignedHeaders=host&x-id=GetObject",
+        "expiry_time": "2022-07-27T20:01:52.067Z"
+      }
+    },
+    "color": "gray_background"
+  }
+}

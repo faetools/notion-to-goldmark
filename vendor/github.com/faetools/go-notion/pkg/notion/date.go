@@ -94,23 +94,20 @@ func parseTimeOrDate(ts string, loc *time.Location) (time.Time, error) {
 	}
 
 	t, err := time.ParseInLocation(time.RFC3339, ts, loc)
-	if err != nil || loc == nil {
+	if err != nil {
 		return t, err
 	}
 
-	sec := t.Second()
-
-	t = t.In(loc)
-
-	// adjust seconds offset
-	// see issue: https://github.com/golang/go/issues/53919
-	// and fix: https://github.com/golang/go/pull/53920
-	diff := sec - t.Second()
-	if diff > 0 {
-		diff -= 60
+	if loc == t.Location() {
+		return t, nil
 	}
 
-	return t.Add(time.Duration(diff) * time.Second), nil
+	// adjust seconds offset
+	_, offsetPre := t.Zone()
+	t = t.In(loc)
+	_, offsetPost := t.Zone()
+
+	return t.Add(time.Duration(offsetPre-offsetPost) * time.Second), nil
 }
 
 func (d Date) String() string {

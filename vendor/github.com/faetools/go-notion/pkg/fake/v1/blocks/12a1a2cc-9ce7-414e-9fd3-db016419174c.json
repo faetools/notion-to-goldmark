@@ -1,0 +1,49 @@
+{
+  "object": "block",
+  "id": "12a1a2cc-9ce7-414e-9fd3-db016419174c",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T17:49:00.000Z",
+  "last_edited_time": "2022-07-14T17:53:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": true,
+  "archived": false,
+  "type": "callout",
+  "callout": {
+    "rich_text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "Orange callout with a custom melting face.",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "Orange callout with a custom melting face.",
+        "href": null
+      }
+    ],
+    "icon": {
+      "type": "external",
+      "external": {
+        "url": "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/325/melting-face_1fae0.png"
+      }
+    },
+    "color": "orange"
+  }
+}

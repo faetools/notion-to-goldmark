@@ -1,0 +1,1160 @@
+{
+  "object": "list",
+  "results": [
+    {
+      "object": "page",
+      "id": "c85a6329-44c0-4a8f-98d4-0ddd0e756b10",
+      "created_time": "2022-07-22T17:13:00.000Z",
+      "last_edited_time": "2022-07-22T19:14:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+      },
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "7a3c647e-4c1e-4c27-bf1d-cfb0105e55ce"
+      },
+      "archived": false,
+      "properties": {
+        "formula number": {
+          "id": "%3DuTh",
+          "type": "formula",
+          "formula": {
+            "type": "number",
+            "number": null
+          }
+        },
+        "count of relations": {
+          "id": "%40ft%3F",
+          "type": "rollup",
+          "rollup": {
+            "type": "number",
+            "number": 2,
+            "function": "count"
+          }
+        },
+        "equal relations": {
+          "id": "ASTz",
+          "type": "formula",
+          "formula": {
+            "type": "number",
+            "number": 16
+          }
+        },
+        "A number": {
+          "id": "CQUf",
+          "type": "number",
+          "number": null
+        },
+        "Property checkbox": {
+          "id": "C%5EC%3A",
+          "type": "formula",
+          "formula": {
+            "type": "boolean",
+            "boolean": false
+          }
+        },
+        "Equal relation": {
+          "id": "EUgY",
+          "type": "relation",
+          "relation": [
+            {
+              "id": "20c5eed2-59ea-476e-af69-da0ae68a084d"
+            },
+            {
+              "id": "5f17fb6b-2318-4521-b83d-c0f5438abd0b"
+            }
+          ]
+        },
+        "My checkbox": {
+          "id": "JuTz",
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "files": {
+          "id": "KXdF",
+          "type": "files",
+          "files": []
+        },
+        "when it was created": {
+          "id": "NeE%60",
+          "type": "created_time",
+          "created_time": "2022-07-22T17:13:00.000Z"
+        },
+        "Property": {
+          "id": "RYYU",
+          "type": "phone_number",
+          "phone_number": null
+        },
+        "contact": {
+          "id": "TWA%3B",
+          "type": "email",
+          "email": "not a real email"
+        },
+        "Top": {
+          "id": "UtGj",
+          "type": "relation",
+          "relation": []
+        },
+        "tags": {
+          "id": "UuqS",
+          "type": "multi_select",
+          "multi_select": []
+        },
+        "Sub": {
+          "id": "VN%3AD",
+          "type": "relation",
+          "relation": [
+            {
+              "id": "5f17fb6b-2318-4521-b83d-c0f5438abd0b"
+            }
+          ]
+        },
+        "formula": {
+          "id": "XJ%3Dc",
+          "type": "formula",
+          "formula": {
+            "type": "string",
+            "string": "no"
+          }
+        },
+        "people": {
+          "id": "%60cG%5E",
+          "type": "people",
+          "people": []
+        },
+        "rollup date": {
+          "id": "czmt",
+          "type": "rollup",
+          "rollup": {
+            "type": "array",
+            "array": [
+              {
+                "type": "date",
+                "date": {
+                  "start": "2022-07-30",
+                  "end": null,
+                  "time_zone": null
+                }
+              },
+              {
+                "type": "date",
+                "date": {
+                  "start": "2022-08-05T16:00:00.000+02:00",
+                  "end": "2022-08-12T03:00:00.000+02:00",
+                  "time_zone": null
+                }
+              }
+            ],
+            "function": "show_unique"
+          }
+        },
+        "who last edited it": {
+          "id": "eszR",
+          "type": "last_edited_by",
+          "last_edited_by": {
+            "object": "user",
+            "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+            "name": "Mark Rösler",
+            "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+            "type": "person",
+            "person": {
+              "email": "mark@faetools.com"
+            }
+          }
+        },
+        "select": {
+          "id": "hiMX",
+          "type": "select",
+          "select": null
+        },
+        "date formula": {
+          "id": "jWgQ",
+          "type": "formula",
+          "formula": {
+            "type": "date",
+            "date": null
+          }
+        },
+        "rollup string": {
+          "id": "kSwR",
+          "type": "rollup",
+          "rollup": {
+            "type": "array",
+            "array": [
+              {
+                "type": "title",
+                "title": [
+                  {
+                    "type": "text",
+                    "text": {
+                      "content": "entry 1",
+                      "link": null
+                    },
+                    "annotations": {
+                      "bold": false,
+                      "italic": false,
+                      "strikethrough": false,
+                      "underline": false,
+                      "code": false,
+                      "color": "default"
+                    },
+                    "plain_text": "entry 1",
+                    "href": null
+                  }
+                ]
+              },
+              {
+                "type": "title",
+                "title": [
+                  {
+                    "type": "text",
+                    "text": {
+                      "content": "entry 2",
+                      "link": null
+                    },
+                    "annotations": {
+                      "bold": false,
+                      "italic": false,
+                      "strikethrough": false,
+                      "underline": false,
+                      "code": false,
+                      "color": "default"
+                    },
+                    "plain_text": "entry 2",
+                    "href": null
+                  }
+                ]
+              }
+            ],
+            "function": "show_unique"
+          }
+        },
+        "yes or no?": {
+          "id": "pt%3F%5D",
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "some date": {
+          "id": "uK%60G",
+          "type": "date",
+          "date": null
+        },
+        "Money": {
+          "id": "wtdu",
+          "type": "number",
+          "number": null
+        },
+        "number with commas": {
+          "id": "yUX%3B",
+          "type": "number",
+          "number": null
+        },
+        "meme links": {
+          "id": "z%3BWh",
+          "type": "url",
+          "url": null
+        },
+        "Some text": {
+          "id": "~FiP",
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "who created it": {
+          "id": "~esH",
+          "type": "created_by",
+          "created_by": {
+            "object": "user",
+            "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+            "name": "Mark Rösler",
+            "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+            "type": "person",
+            "person": {
+              "email": "mark@faetools.com"
+            }
+          }
+        },
+        "Status": {
+          "id": "~%7CtN",
+          "type": "status",
+          "status": null
+        },
+        "Name": {
+          "id": "title",
+          "type": "title",
+          "title": []
+        }
+      },
+      "url": "https://www.notion.so/c85a632944c04a8f98d40ddd0e756b10"
+    },
+    {
+      "object": "page",
+      "id": "20c5eed2-59ea-476e-af69-da0ae68a084d",
+      "created_time": "2022-07-14T18:03:00.000Z",
+      "last_edited_time": "2022-07-22T17:20:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+      },
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "7a3c647e-4c1e-4c27-bf1d-cfb0105e55ce"
+      },
+      "archived": false,
+      "properties": {
+        "formula number": {
+          "id": "%3DuTh",
+          "type": "formula",
+          "formula": {
+            "type": "number",
+            "number": 31.3
+          }
+        },
+        "count of relations": {
+          "id": "%40ft%3F",
+          "type": "rollup",
+          "rollup": {
+            "type": "number",
+            "number": 1,
+            "function": "count"
+          }
+        },
+        "equal relations": {
+          "id": "ASTz",
+          "type": "formula",
+          "formula": {
+            "type": "number",
+            "number": 0
+          }
+        },
+        "A number": {
+          "id": "CQUf",
+          "type": "number",
+          "number": 31.3
+        },
+        "Property checkbox": {
+          "id": "C%5EC%3A",
+          "type": "formula",
+          "formula": {
+            "type": "boolean",
+            "boolean": false
+          }
+        },
+        "Equal relation": {
+          "id": "EUgY",
+          "type": "relation",
+          "relation": [
+            {
+              "id": "c85a6329-44c0-4a8f-98d4-0ddd0e756b10"
+            }
+          ]
+        },
+        "My checkbox": {
+          "id": "JuTz",
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "files": {
+          "id": "KXdF",
+          "type": "files",
+          "files": [
+            {
+              "name": "https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=Hy5eTACi",
+              "type": "external",
+              "external": {
+                "url": "https://www.princeton.edu/sites/default/files/styles/full_2x/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=Hy5eTACi"
+              }
+            },
+            {
+              "name": "dog.webp",
+              "type": "file",
+              "file": {
+                "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3741848b-55b4-439c-aa13-e0fa996c715a/dog.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220727%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220727T190400Z&X-Amz-Expires=3600&X-Amz-Signature=313821f6fb30ec193cb692e570322eb8a1a7d77da6b782f2a58c8a41bfe5428b&X-Amz-SignedHeaders=host&x-id=GetObject",
+                "expiry_time": "2022-07-27T20:04:00.647Z"
+              }
+            }
+          ]
+        },
+        "when it was created": {
+          "id": "NeE%60",
+          "type": "created_time",
+          "created_time": "2022-07-14T18:03:00.000Z"
+        },
+        "Property": {
+          "id": "RYYU",
+          "type": "phone_number",
+          "phone_number": "+1-202-555-0146"
+        },
+        "contact": {
+          "id": "TWA%3B",
+          "type": "email",
+          "email": "mark@faetools.com"
+        },
+        "Top": {
+          "id": "UtGj",
+          "type": "relation",
+          "relation": []
+        },
+        "tags": {
+          "id": "UuqS",
+          "type": "multi_select",
+          "multi_select": [
+            {
+              "id": "5e3a1052-bbdd-4b06-a321-1a6006877d34",
+              "name": "tag 1",
+              "color": "orange"
+            },
+            {
+              "id": "a013f196-72c4-44bd-b40d-1acbf65249c3",
+              "name": "tag 2",
+              "color": "red"
+            },
+            {
+              "id": "5f469e5d-e74d-45a9-aa89-a87dad5abaf8",
+              "name": "tag 3",
+              "color": "gray"
+            }
+          ]
+        },
+        "Sub": {
+          "id": "VN%3AD",
+          "type": "relation",
+          "relation": [
+            {
+              "id": "45d81ac0-bf71-4a31-b096-941dd050f3e1"
+            }
+          ]
+        },
+        "formula": {
+          "id": "XJ%3Dc",
+          "type": "formula",
+          "formula": {
+            "type": "string",
+            "string": "no"
+          }
+        },
+        "people": {
+          "id": "%60cG%5E",
+          "type": "people",
+          "people": [
+            {
+              "object": "user",
+              "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+              "name": "Mark Rösler",
+              "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+              "type": "person",
+              "person": {
+                "email": "mark@faetools.com"
+              }
+            }
+          ]
+        },
+        "rollup date": {
+          "id": "czmt",
+          "type": "rollup",
+          "rollup": {
+            "type": "array",
+            "array": [
+              {
+                "type": "date",
+                "date": null
+              }
+            ],
+            "function": "show_unique"
+          }
+        },
+        "who last edited it": {
+          "id": "eszR",
+          "type": "last_edited_by",
+          "last_edited_by": {
+            "object": "user",
+            "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+            "name": "Mark Rösler",
+            "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+            "type": "person",
+            "person": {
+              "email": "mark@faetools.com"
+            }
+          }
+        },
+        "select": {
+          "id": "hiMX",
+          "type": "select",
+          "select": {
+            "id": "q~Z:",
+            "name": "foo",
+            "color": "green"
+          }
+        },
+        "date formula": {
+          "id": "jWgQ",
+          "type": "formula",
+          "formula": {
+            "type": "date",
+            "date": {
+              "start": "2022-07-30",
+              "end": null,
+              "time_zone": null
+            }
+          }
+        },
+        "rollup string": {
+          "id": "kSwR",
+          "type": "rollup",
+          "rollup": {
+            "type": "array",
+            "array": [
+              {
+                "type": "title",
+                "title": []
+              }
+            ],
+            "function": "show_unique"
+          }
+        },
+        "yes or no?": {
+          "id": "pt%3F%5D",
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "some date": {
+          "id": "uK%60G",
+          "type": "date",
+          "date": {
+            "start": "2022-07-30",
+            "end": null,
+            "time_zone": null
+          }
+        },
+        "Money": {
+          "id": "wtdu",
+          "type": "number",
+          "number": 3
+        },
+        "number with commas": {
+          "id": "yUX%3B",
+          "type": "number",
+          "number": 3.333
+        },
+        "meme links": {
+          "id": "z%3BWh",
+          "type": "url",
+          "url": "https://www.reddit.com/r/wholesomememes/"
+        },
+        "Some text": {
+          "id": "~FiP",
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "who created it": {
+          "id": "~esH",
+          "type": "created_by",
+          "created_by": {
+            "object": "user",
+            "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+            "name": "Mark Rösler",
+            "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+            "type": "person",
+            "person": {
+              "email": "mark@faetools.com"
+            }
+          }
+        },
+        "Status": {
+          "id": "~%7CtN",
+          "type": "status",
+          "status": null
+        },
+        "Name": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": {
+                "content": "entry 1",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "entry 1",
+              "href": null
+            }
+          ]
+        }
+      },
+      "url": "https://www.notion.so/entry-1-20c5eed259ea476eaf69da0ae68a084d"
+    },
+    {
+      "object": "page",
+      "id": "45d81ac0-bf71-4a31-b096-941dd050f3e1",
+      "created_time": "2022-07-14T18:03:00.000Z",
+      "last_edited_time": "2022-07-22T17:13:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+      },
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "7a3c647e-4c1e-4c27-bf1d-cfb0105e55ce"
+      },
+      "archived": false,
+      "properties": {
+        "formula number": {
+          "id": "%3DuTh",
+          "type": "formula",
+          "formula": {
+            "type": "number",
+            "number": 132
+          }
+        },
+        "count of relations": {
+          "id": "%40ft%3F",
+          "type": "rollup",
+          "rollup": {
+            "type": "number",
+            "number": 0,
+            "function": "count"
+          }
+        },
+        "equal relations": {
+          "id": "ASTz",
+          "type": "formula",
+          "formula": {
+            "type": "number",
+            "number": 0
+          }
+        },
+        "A number": {
+          "id": "CQUf",
+          "type": "number",
+          "number": 132
+        },
+        "Property checkbox": {
+          "id": "C%5EC%3A",
+          "type": "formula",
+          "formula": {
+            "type": "boolean",
+            "boolean": false
+          }
+        },
+        "Equal relation": {
+          "id": "EUgY",
+          "type": "relation",
+          "relation": []
+        },
+        "My checkbox": {
+          "id": "JuTz",
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "files": {
+          "id": "KXdF",
+          "type": "files",
+          "files": [
+            {
+              "name": "Cat03.jpeg",
+              "type": "file",
+              "file": {
+                "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/89ddf0a7-2a82-4e1e-b09e-b50198fce7d5/Cat03.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220727%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220727T190400Z&X-Amz-Expires=3600&X-Amz-Signature=88cadec7e879bac624faec9b872f9a8a773c5562060a81c053574c33b9ef746e&X-Amz-SignedHeaders=host&x-id=GetObject",
+                "expiry_time": "2022-07-27T20:04:00.646Z"
+              }
+            }
+          ]
+        },
+        "when it was created": {
+          "id": "NeE%60",
+          "type": "created_time",
+          "created_time": "2022-07-14T18:03:00.000Z"
+        },
+        "Property": {
+          "id": "RYYU",
+          "type": "phone_number",
+          "phone_number": "202-555-0114"
+        },
+        "contact": {
+          "id": "TWA%3B",
+          "type": "email",
+          "email": null
+        },
+        "Top": {
+          "id": "UtGj",
+          "type": "relation",
+          "relation": [
+            {
+              "id": "20c5eed2-59ea-476e-af69-da0ae68a084d"
+            }
+          ]
+        },
+        "tags": {
+          "id": "UuqS",
+          "type": "multi_select",
+          "multi_select": []
+        },
+        "Sub": {
+          "id": "VN%3AD",
+          "type": "relation",
+          "relation": [
+            {
+              "id": "5f17fb6b-2318-4521-b83d-c0f5438abd0b"
+            }
+          ]
+        },
+        "formula": {
+          "id": "XJ%3Dc",
+          "type": "formula",
+          "formula": {
+            "type": "string",
+            "string": "yes"
+          }
+        },
+        "people": {
+          "id": "%60cG%5E",
+          "type": "people",
+          "people": [
+            {
+              "object": "user",
+              "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+              "name": "Mark Rösler",
+              "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+              "type": "person",
+              "person": {
+                "email": "mark@faetools.com"
+              }
+            }
+          ]
+        },
+        "rollup date": {
+          "id": "czmt",
+          "type": "rollup",
+          "rollup": {
+            "type": "array",
+            "array": [],
+            "function": "show_unique"
+          }
+        },
+        "who last edited it": {
+          "id": "eszR",
+          "type": "last_edited_by",
+          "last_edited_by": {
+            "object": "user",
+            "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+            "name": "Mark Rösler",
+            "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+            "type": "person",
+            "person": {
+              "email": "mark@faetools.com"
+            }
+          }
+        },
+        "select": {
+          "id": "hiMX",
+          "type": "select",
+          "select": null
+        },
+        "date formula": {
+          "id": "jWgQ",
+          "type": "formula",
+          "formula": {
+            "type": "date",
+            "date": null
+          }
+        },
+        "rollup string": {
+          "id": "kSwR",
+          "type": "rollup",
+          "rollup": {
+            "type": "array",
+            "array": [],
+            "function": "show_unique"
+          }
+        },
+        "yes or no?": {
+          "id": "pt%3F%5D",
+          "type": "checkbox",
+          "checkbox": true
+        },
+        "some date": {
+          "id": "uK%60G",
+          "type": "date",
+          "date": null
+        },
+        "Money": {
+          "id": "wtdu",
+          "type": "number",
+          "number": 4
+        },
+        "number with commas": {
+          "id": "yUX%3B",
+          "type": "number",
+          "number": 423
+        },
+        "meme links": {
+          "id": "z%3BWh",
+          "type": "url",
+          "url": null
+        },
+        "Some text": {
+          "id": "~FiP",
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "who created it": {
+          "id": "~esH",
+          "type": "created_by",
+          "created_by": {
+            "object": "user",
+            "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+            "name": "Mark Rösler",
+            "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+            "type": "person",
+            "person": {
+              "email": "mark@faetools.com"
+            }
+          }
+        },
+        "Status": {
+          "id": "~%7CtN",
+          "type": "status",
+          "status": {
+            "id": "8ccf4d06-8d53-471a-b51a-fe5a664c6160",
+            "name": "Done",
+            "color": "green"
+          }
+        },
+        "Name": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": {
+                "content": "entry 3",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "entry 3",
+              "href": null
+            }
+          ]
+        }
+      },
+      "url": "https://www.notion.so/entry-3-45d81ac0bf714a31b096941dd050f3e1"
+    },
+    {
+      "object": "page",
+      "id": "5f17fb6b-2318-4521-b83d-c0f5438abd0b",
+      "created_time": "2022-07-14T18:03:00.000Z",
+      "last_edited_time": "2022-07-22T17:21:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+      },
+      "cover": null,
+      "icon": null,
+      "parent": {
+        "type": "database_id",
+        "database_id": "7a3c647e-4c1e-4c27-bf1d-cfb0105e55ce"
+      },
+      "archived": false,
+      "properties": {
+        "formula number": {
+          "id": "%3DuTh",
+          "type": "formula",
+          "formula": {
+            "type": "number",
+            "number": 32.7
+          }
+        },
+        "count of relations": {
+          "id": "%40ft%3F",
+          "type": "rollup",
+          "rollup": {
+            "type": "number",
+            "number": 1,
+            "function": "count"
+          }
+        },
+        "equal relations": {
+          "id": "ASTz",
+          "type": "formula",
+          "formula": {
+            "type": "number",
+            "number": 0
+          }
+        },
+        "A number": {
+          "id": "CQUf",
+          "type": "number",
+          "number": 32.7
+        },
+        "Property checkbox": {
+          "id": "C%5EC%3A",
+          "type": "formula",
+          "formula": {
+            "type": "boolean",
+            "boolean": false
+          }
+        },
+        "Equal relation": {
+          "id": "EUgY",
+          "type": "relation",
+          "relation": [
+            {
+              "id": "c85a6329-44c0-4a8f-98d4-0ddd0e756b10"
+            }
+          ]
+        },
+        "My checkbox": {
+          "id": "JuTz",
+          "type": "checkbox",
+          "checkbox": false
+        },
+        "files": {
+          "id": "KXdF",
+          "type": "files",
+          "files": []
+        },
+        "when it was created": {
+          "id": "NeE%60",
+          "type": "created_time",
+          "created_time": "2022-07-14T18:03:00.000Z"
+        },
+        "Property": {
+          "id": "RYYU",
+          "type": "phone_number",
+          "phone_number": null
+        },
+        "contact": {
+          "id": "TWA%3B",
+          "type": "email",
+          "email": "info@authenticgermanlearning.com"
+        },
+        "Top": {
+          "id": "UtGj",
+          "type": "relation",
+          "relation": [
+            {
+              "id": "c85a6329-44c0-4a8f-98d4-0ddd0e756b10"
+            },
+            {
+              "id": "45d81ac0-bf71-4a31-b096-941dd050f3e1"
+            }
+          ]
+        },
+        "tags": {
+          "id": "UuqS",
+          "type": "multi_select",
+          "multi_select": [
+            {
+              "id": "a013f196-72c4-44bd-b40d-1acbf65249c3",
+              "name": "tag 2",
+              "color": "red"
+            }
+          ]
+        },
+        "Sub": {
+          "id": "VN%3AD",
+          "type": "relation",
+          "relation": []
+        },
+        "formula": {
+          "id": "XJ%3Dc",
+          "type": "formula",
+          "formula": {
+            "type": "string",
+            "string": "yes"
+          }
+        },
+        "people": {
+          "id": "%60cG%5E",
+          "type": "people",
+          "people": []
+        },
+        "rollup date": {
+          "id": "czmt",
+          "type": "rollup",
+          "rollup": {
+            "type": "array",
+            "array": [
+              {
+                "type": "date",
+                "date": null
+              }
+            ],
+            "function": "show_unique"
+          }
+        },
+        "who last edited it": {
+          "id": "eszR",
+          "type": "last_edited_by",
+          "last_edited_by": {
+            "object": "user",
+            "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+            "name": "Mark Rösler",
+            "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+            "type": "person",
+            "person": {
+              "email": "mark@faetools.com"
+            }
+          }
+        },
+        "select": {
+          "id": "hiMX",
+          "type": "select",
+          "select": {
+            "id": "[;Jv",
+            "name": "bar",
+            "color": "blue"
+          }
+        },
+        "date formula": {
+          "id": "jWgQ",
+          "type": "formula",
+          "formula": {
+            "type": "date",
+            "date": {
+              "start": "2022-08-05T16:00:00.000+02:00",
+              "end": "2022-08-12T03:00:00.000+02:00",
+              "time_zone": null
+            }
+          }
+        },
+        "rollup string": {
+          "id": "kSwR",
+          "type": "rollup",
+          "rollup": {
+            "type": "array",
+            "array": [
+              {
+                "type": "title",
+                "title": []
+              }
+            ],
+            "function": "show_unique"
+          }
+        },
+        "yes or no?": {
+          "id": "pt%3F%5D",
+          "type": "checkbox",
+          "checkbox": true
+        },
+        "some date": {
+          "id": "uK%60G",
+          "type": "date",
+          "date": {
+            "start": "2022-08-05T16:00:00.000+02:00",
+            "end": "2022-08-12T03:00:00.000+02:00",
+            "time_zone": null
+          }
+        },
+        "Money": {
+          "id": "wtdu",
+          "type": "number",
+          "number": 41.12
+        },
+        "number with commas": {
+          "id": "yUX%3B",
+          "type": "number",
+          "number": 5.7
+        },
+        "meme links": {
+          "id": "z%3BWh",
+          "type": "url",
+          "url": "https://www.wattpad.com/918884959-a-daily-dose-of-wholesome-memes-wholesome-meme-3"
+        },
+        "Some text": {
+          "id": "~FiP",
+          "type": "rich_text",
+          "rich_text": []
+        },
+        "who created it": {
+          "id": "~esH",
+          "type": "created_by",
+          "created_by": {
+            "object": "user",
+            "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+            "name": "Mark Rösler",
+            "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+            "type": "person",
+            "person": {
+              "email": "mark@faetools.com"
+            }
+          }
+        },
+        "Status": {
+          "id": "~%7CtN",
+          "type": "status",
+          "status": {
+            "id": "t|{j",
+            "name": "no idea",
+            "color": "gray"
+          }
+        },
+        "Name": {
+          "id": "title",
+          "type": "title",
+          "title": [
+            {
+              "type": "text",
+              "text": {
+                "content": "entry 2",
+                "link": null
+              },
+              "annotations": {
+                "bold": false,
+                "italic": false,
+                "strikethrough": false,
+                "underline": false,
+                "code": false,
+                "color": "default"
+              },
+              "plain_text": "entry 2",
+              "href": null
+            }
+          ]
+        }
+      },
+      "url": "https://www.notion.so/entry-2-5f17fb6b23184521b83dc0f5438abd0b"
+    }
+  ],
+  "next_cursor": null,
+  "has_more": false,
+  "type": "page",
+  "page": {}
+}

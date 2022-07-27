@@ -1,0 +1,269 @@
+{
+  "object": "page",
+  "id": "45d81ac0-bf71-4a31-b096-941dd050f3e1",
+  "created_time": "2022-07-14T18:03:00.000Z",
+  "last_edited_time": "2022-07-22T17:13:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "cover": null,
+  "icon": null,
+  "parent": {
+    "type": "database_id",
+    "database_id": "7a3c647e-4c1e-4c27-bf1d-cfb0105e55ce"
+  },
+  "archived": false,
+  "properties": {
+    "formula number": {
+      "id": "%3DuTh",
+      "type": "formula",
+      "formula": {
+        "type": "number",
+        "number": 132
+      }
+    },
+    "count of relations": {
+      "id": "%40ft%3F",
+      "type": "rollup",
+      "rollup": {
+        "type": "number",
+        "number": 0,
+        "function": "count"
+      }
+    },
+    "equal relations": {
+      "id": "ASTz",
+      "type": "formula",
+      "formula": {
+        "type": "number",
+        "number": 0
+      }
+    },
+    "A number": {
+      "id": "CQUf",
+      "type": "number",
+      "number": 132
+    },
+    "Property checkbox": {
+      "id": "C%5EC%3A",
+      "type": "formula",
+      "formula": {
+        "type": "boolean",
+        "boolean": false
+      }
+    },
+    "Equal relation": {
+      "id": "EUgY",
+      "type": "relation",
+      "relation": []
+    },
+    "My checkbox": {
+      "id": "JuTz",
+      "type": "checkbox",
+      "checkbox": false
+    },
+    "files": {
+      "id": "KXdF",
+      "type": "files",
+      "files": [
+        {
+          "name": "Cat03.jpeg",
+          "type": "file",
+          "file": {
+            "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/89ddf0a7-2a82-4e1e-b09e-b50198fce7d5/Cat03.jpeg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220727%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220727T190402Z&X-Amz-Expires=3600&X-Amz-Signature=5defd536f764a669d3f715f226a74e910d60f428633a375b5688ada953de5a13&X-Amz-SignedHeaders=host&x-id=GetObject",
+            "expiry_time": "2022-07-27T20:04:02.114Z"
+          }
+        }
+      ]
+    },
+    "when it was created": {
+      "id": "NeE%60",
+      "type": "created_time",
+      "created_time": "2022-07-14T18:03:00.000Z"
+    },
+    "Property": {
+      "id": "RYYU",
+      "type": "phone_number",
+      "phone_number": "202-555-0114"
+    },
+    "contact": {
+      "id": "TWA%3B",
+      "type": "email",
+      "email": null
+    },
+    "Top": {
+      "id": "UtGj",
+      "type": "relation",
+      "relation": [
+        {
+          "id": "20c5eed2-59ea-476e-af69-da0ae68a084d"
+        }
+      ]
+    },
+    "tags": {
+      "id": "UuqS",
+      "type": "multi_select",
+      "multi_select": []
+    },
+    "Sub": {
+      "id": "VN%3AD",
+      "type": "relation",
+      "relation": [
+        {
+          "id": "5f17fb6b-2318-4521-b83d-c0f5438abd0b"
+        }
+      ]
+    },
+    "formula": {
+      "id": "XJ%3Dc",
+      "type": "formula",
+      "formula": {
+        "type": "string",
+        "string": "yes"
+      }
+    },
+    "people": {
+      "id": "%60cG%5E",
+      "type": "people",
+      "people": [
+        {
+          "object": "user",
+          "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+          "name": "Mark Rösler",
+          "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+          "type": "person",
+          "person": {
+            "email": "mark@faetools.com"
+          }
+        }
+      ]
+    },
+    "rollup date": {
+      "id": "czmt",
+      "type": "rollup",
+      "rollup": {
+        "type": "array",
+        "array": [],
+        "function": "show_unique"
+      }
+    },
+    "who last edited it": {
+      "id": "eszR",
+      "type": "last_edited_by",
+      "last_edited_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+        "name": "Mark Rösler",
+        "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+        "type": "person",
+        "person": {
+          "email": "mark@faetools.com"
+        }
+      }
+    },
+    "select": {
+      "id": "hiMX",
+      "type": "select",
+      "select": null
+    },
+    "date formula": {
+      "id": "jWgQ",
+      "type": "formula",
+      "formula": {
+        "type": "date",
+        "date": null
+      }
+    },
+    "rollup string": {
+      "id": "kSwR",
+      "type": "rollup",
+      "rollup": {
+        "type": "array",
+        "array": [],
+        "function": "show_unique"
+      }
+    },
+    "yes or no?": {
+      "id": "pt%3F%5D",
+      "type": "checkbox",
+      "checkbox": true
+    },
+    "some date": {
+      "id": "uK%60G",
+      "type": "date",
+      "date": null
+    },
+    "Money": {
+      "id": "wtdu",
+      "type": "number",
+      "number": 4
+    },
+    "number with commas": {
+      "id": "yUX%3B",
+      "type": "number",
+      "number": 423
+    },
+    "meme links": {
+      "id": "z%3BWh",
+      "type": "url",
+      "url": null
+    },
+    "Some text": {
+      "id": "~FiP",
+      "type": "rich_text",
+      "rich_text": []
+    },
+    "who created it": {
+      "id": "~esH",
+      "type": "created_by",
+      "created_by": {
+        "object": "user",
+        "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45",
+        "name": "Mark Rösler",
+        "avatar_url": "https://lh3.googleusercontent.com/a-/AOh14Gi54BUKkLrZ2IX8ORURI__6avK9zjCYXdhbmthj=s100",
+        "type": "person",
+        "person": {
+          "email": "mark@faetools.com"
+        }
+      }
+    },
+    "Status": {
+      "id": "~%7CtN",
+      "type": "status",
+      "status": {
+        "id": "8ccf4d06-8d53-471a-b51a-fe5a664c6160",
+        "name": "Done",
+        "color": "green"
+      }
+    },
+    "Name": {
+      "id": "title",
+      "type": "title",
+      "title": [
+        {
+          "type": "text",
+          "text": {
+            "content": "entry 3",
+            "link": null
+          },
+          "annotations": {
+            "bold": false,
+            "italic": false,
+            "strikethrough": false,
+            "underline": false,
+            "code": false,
+            "color": "default"
+          },
+          "plain_text": "entry 3",
+          "href": null
+        }
+      ]
+    }
+  },
+  "url": "https://www.notion.so/entry-3-45d81ac0bf714a31b096941dd050f3e1"
+}

@@ -1,0 +1,43 @@
+{
+  "object": "block",
+  "id": "edea19f8-ad2f-4c18-b774-35d64ebcdac3",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T17:45:00.000Z",
+  "last_edited_time": "2022-07-14T17:46:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "paragraph",
+  "paragraph": {
+    "rich_text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "Red on yellow.",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "red"
+        },
+        "plain_text": "Red on yellow.",
+        "href": null
+      }
+    ],
+    "color": "yellow_background"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "object": "block",
+  "id": "7e4b229d-b2eb-45df-b272-a07f88b7722e",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T17:54:00.000Z",
+  "last_edited_time": "2022-07-14T17:56:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "quote",
+  "quote": {
+    "rich_text": [
+      {
+        "type": "text",
+        "text": {
+          "content": " “The problem with ",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": " “The problem with ",
+        "href": null
+      },
+      {
+        "type": "text",
+        "text": {
+          "content": "internet",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": true,
+          "color": "default"
+        },
+        "plain_text": "internet",
+        "href": null
+      },
+      {
+        "type": "text",
+        "text": {
+          "content": " quotes is that you cannot always depend on their accuracy.” — Abraham Lincoln, 1864",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": " quotes is that you cannot always depend on their accuracy.” — Abraham Lincoln, 1864",
+        "href": null
+      }
+    ],
+    "color": "green"
+  }
+}

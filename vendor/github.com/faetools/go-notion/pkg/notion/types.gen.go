@@ -11,11 +11,14 @@ import (
 
 // Defines values for BlockType.
 const (
+	BlockTypeAudio            BlockType = "audio"
 	BlockTypeBookmark         BlockType = "bookmark"
+	BlockTypeBreadcrumb       BlockType = "breadcrumb"
 	BlockTypeBulletedListItem BlockType = "bulleted_list_item"
 	BlockTypeCallout          BlockType = "callout"
 	BlockTypeChildDatabase    BlockType = "child_database"
 	BlockTypeChildPage        BlockType = "child_page"
+	BlockTypeCode             BlockType = "code"
 	BlockTypeColumn           BlockType = "column"
 	BlockTypeColumnList       BlockType = "column_list"
 	BlockTypeDivider          BlockType = "divider"
@@ -154,6 +157,14 @@ const (
 	FileWithCaptionTypeFile     FileWithCaptionType = "file"
 )
 
+// Defines values for FormulaType.
+const (
+	FormulaTypeBoolean FormulaType = "boolean"
+	FormulaTypeDate    FormulaType = "date"
+	FormulaTypeNumber  FormulaType = "number"
+	FormulaTypeString  FormulaType = "string"
+)
+
 // Defines values for IconType.
 const (
 	IconTypeEmoji    IconType = "emoji"
@@ -243,6 +254,7 @@ const (
 	PropertyTypeRichText       PropertyType = "rich_text"
 	PropertyTypeRollup         PropertyType = "rollup"
 	PropertyTypeSelect         PropertyType = "select"
+	PropertyTypeStatus         PropertyType = "status"
 	PropertyTypeTitle          PropertyType = "title"
 	PropertyTypeUrl            PropertyType = "url"
 )
@@ -252,6 +264,32 @@ const (
 	RichTextTypeEquation RichTextType = "equation"
 	RichTextTypeMention  RichTextType = "mention"
 	RichTextTypeText     RichTextType = "text"
+)
+
+// Defines values for RollupType.
+const (
+	RollupTypeArray  RollupType = "array"
+	RollupTypeDate   RollupType = "date"
+	RollupTypeNumber RollupType = "number"
+	RollupTypeString RollupType = "string"
+)
+
+// Defines values for RollupConfigFunction.
+const (
+	RollupConfigFunctionAverage           RollupConfigFunction = "average"
+	RollupConfigFunctionCountAll          RollupConfigFunction = "count_all"
+	RollupConfigFunctionCountEmpty        RollupConfigFunction = "count_empty"
+	RollupConfigFunctionCountNotEmpty     RollupConfigFunction = "count_not_empty"
+	RollupConfigFunctionCountUniqueValues RollupConfigFunction = "count_unique_values"
+	RollupConfigFunctionCountValues       RollupConfigFunction = "count_values"
+	RollupConfigFunctionMax               RollupConfigFunction = "max"
+	RollupConfigFunctionMedian            RollupConfigFunction = "median"
+	RollupConfigFunctionMin               RollupConfigFunction = "min"
+	RollupConfigFunctionPercentEmpty      RollupConfigFunction = "percent_empty"
+	RollupConfigFunctionPercentNotEmpty   RollupConfigFunction = "percent_not_empty"
+	RollupConfigFunctionRange             RollupConfigFunction = "range"
+	RollupConfigFunctionShowOriginal      RollupConfigFunction = "show_original"
+	RollupConfigFunctionSum               RollupConfigFunction = "sum"
 )
 
 // Defines values for SortDirection.
@@ -312,8 +350,8 @@ type Block struct {
 	// Breadcrumb block objects do not contain any information within the breadcrumb property
 	Breadcrumb *map[string]interface{} `json:"breadcrumb,omitempty"`
 
-	// List item block objects contain this information within the `numbered_list_item` or `bulleted_list_item` property.
-	BulletedListItem *ListItem `json:"bulleted_list_item,omitempty"`
+	// Paragraph, heading, quote, toggle and list item block objects contain this information within their respective property.
+	BulletedListItem *Paragraph `json:"bulleted_list_item,omitempty"`
 
 	// Callout block objects contain the following information within the callout field.
 	Callout *Callout `json:"callout,omitempty"`
@@ -352,12 +390,18 @@ type Block struct {
 	File *FileWithCaption `json:"file,omitempty"`
 
 	// Whether or not the block has children blocks nested within it.
-	HasChildren bool     `json:"has_children"`
-	Heading1    *Heading `json:"heading_1,omitempty"`
-	Heading2    *Heading `json:"heading_2,omitempty"`
-	Heading3    *Heading `json:"heading_3,omitempty"`
+	HasChildren bool `json:"has_children"`
 
-	// A unique identifier for a page, block, database, or user.
+	// Paragraph, heading, quote, toggle and list item block objects contain this information within their respective property.
+	Heading1 *Paragraph `json:"heading_1,omitempty"`
+
+	// Paragraph, heading, quote, toggle and list item block objects contain this information within their respective property.
+	Heading2 *Paragraph `json:"heading_2,omitempty"`
+
+	// Paragraph, heading, quote, toggle and list item block objects contain this information within their respective property.
+	Heading3 *Paragraph `json:"heading_3,omitempty"`
+
+	// A unique identifier for a page, block, database, user, or option.
 	Id UUID `json:"id"`
 
 	// File objects contain data about files uploaded to Notion as well as external files linked in Notion. A PDF can also have a caption.
@@ -375,13 +419,13 @@ type Block struct {
 	LinkPreview *LinkPreview `json:"link_preview,omitempty"`
 	LinkToPage  *LinkToPage  `json:"link_to_page,omitempty"`
 
-	// List item block objects contain this information within the `numbered_list_item` or `bulleted_list_item` property.
-	NumberedListItem *ListItem `json:"numbered_list_item,omitempty"`
+	// Paragraph, heading, quote, toggle and list item block objects contain this information within their respective property.
+	NumberedListItem *Paragraph `json:"numbered_list_item,omitempty"`
 
 	// Always "block".
 	Object string `json:"object"`
 
-	// Paragraph block objects contain this information within the `paragraph` property.
+	// Paragraph, heading, quote, toggle and list item block objects contain this information within their respective property.
 	Paragraph *Paragraph `json:"paragraph,omitempty"`
 
 	// The `parent` property of a page or database contains these keys. Mandatory when creating, must be missing when updating.
@@ -390,8 +434,8 @@ type Block struct {
 	// File objects contain data about files uploaded to Notion as well as external files linked in Notion. A PDF can also have a caption.
 	Pdf *FileWithCaption `json:"pdf,omitempty"`
 
-	// Quote block objects contain the following information within the quote field.
-	Quote       *Quote       `json:"quote,omitempty"`
+	// Paragraph, heading, quote, toggle and list item block objects contain this information within their respective property.
+	Quote       *Paragraph   `json:"quote,omitempty"`
 	SyncedBlock *SyncedBlock `json:"synced_block,omitempty"`
 	Table       *Table       `json:"table,omitempty"`
 
@@ -405,8 +449,8 @@ type Block struct {
 	// To do block objects contain this information within the `to_do` property.
 	ToDo *ToDo `json:"to_do,omitempty"`
 
-	// Toggle block objects contain the following information within the toggle field.
-	Toggle *Toggle `json:"toggle,omitempty"`
+	// Paragraph, heading, quote, toggle and list item block objects contain this information within their respective property.
+	Toggle *Paragraph `json:"toggle,omitempty"`
 
 	// Type of block.
 	Type BlockType `json:"type"`
@@ -510,7 +554,7 @@ type Database struct {
 	// Page or database icon. It is either an emoji or a file.
 	Icon *Icon `json:"icon"`
 
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	Id       UUID `json:"id"`
 	IsInline bool `json:"is_inline"`
 
@@ -540,7 +584,7 @@ type DatabaseQuery struct {
 	PageSize int    `json:"page_size"`
 	Sorts    *Sorts `json:"sorts,omitempty"`
 
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	StartCursor *UUID `json:"start_cursor,omitempty"`
 }
 
@@ -596,6 +640,9 @@ type File struct {
 	// File objects contain this information within the `file` property.
 	File *NotionFile `json:"file,omitempty"`
 
+	// A string value corresponding to a filename of the original file upload
+	Name *string `json:"name,omitempty"`
+
 	// Type of this file object.
 	Type FileType `json:"type"`
 }
@@ -640,11 +687,31 @@ type Filter struct {
 // Filters defines model for Filters.
 type Filters []Filter
 
-// Heading defines model for Heading.
-type Heading struct {
-	// The color of the block.
-	Color    Color     `json:"color"`
-	RichText RichTexts `json:"rich_text"`
+// Formula property value objects represent the result of evaluating a formula described in the database's properties. These objects contain a type key and a key corresponding with the value of type. The value of a formula cannot be updated directly.
+//
+// ## Formula values may not match the Notion UI.
+//
+// Formulas returned in page objects are subject to a 25 page reference limitation. The Retrieve a page property endpoint should be used to get an accurate formula value.
+type Formula struct {
+	// Boolean formula property values contain a boolean within the boolean property.
+	Boolean *bool `json:"boolean,omitempty"`
+	Date    *Date `json:"date,omitempty"`
+
+	// Number formula property values contain an optional number within the number property.
+	Number *float32 `json:"number,omitempty"`
+
+	// String formula property values contain an optional string within the string property.
+	String *string     `json:"string,omitempty"`
+	Type   FormulaType `json:"type"`
+}
+
+// FormulaType defines model for Formula.Type.
+type FormulaType string
+
+// Formula database property objects contain this configuration within the `formula` property.
+type FormulaConfig struct {
+	// Formula to evaluate for this property. You can read more about the syntax for formulas in the help center: https://notion.so/notion/Formulas-28f3f5c3ae644c59b4d862046ea6a541
+	Expression string `json:"expression"`
 }
 
 // Page or database icon. It is either an emoji or a file.
@@ -681,10 +748,10 @@ type LinkPreview struct {
 
 // LinkToPage defines model for LinkToPage.
 type LinkToPage struct {
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	DatabaseId *UUID `json:"database_id,omitempty"`
 
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	PageId *UUID `json:"page_id,omitempty"`
 
 	// Type of this link to page object.
@@ -693,13 +760,6 @@ type LinkToPage struct {
 
 // Type of this link to page object.
 type LinkToPageType string
-
-// List item block objects contain this information within the `numbered_list_item` or `bulleted_list_item` property.
-type ListItem struct {
-	// The color of the block.
-	Color    Color     `json:"color"`
-	RichText RichTexts `json:"rich_text"`
-}
 
 // Mention defines model for Mention.
 type Mention struct {
@@ -770,7 +830,7 @@ type Page struct {
 	// Page or database icon. It is either an emoji or a file.
 	Icon *Icon `json:"icon"`
 
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	Id UUID `json:"id"`
 
 	// The User object represents a user in a Notion workspace. Users include full workspace members, and bots. Guests are not included.
@@ -807,7 +867,7 @@ type PagesList struct {
 	Type       string                 `json:"type"`
 }
 
-// Paragraph block objects contain this information within the `paragraph` property.
+// Paragraph, heading, quote, toggle and list item block objects contain this information within their respective property.
 type Paragraph struct {
 	// The color of the block.
 	Color    Color     `json:"color"`
@@ -816,13 +876,13 @@ type Paragraph struct {
 
 // The `parent` property of a page or database contains these keys. Mandatory when creating, must be missing when updating.
 type Parent struct {
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	BlockId *UUID `json:"block_id,omitempty"`
 
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	DatabaseId *UUID `json:"database_id,omitempty"`
 
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	PageId *UUID `json:"page_id,omitempty"`
 
 	// The type of the parent.
@@ -846,32 +906,65 @@ type PropertyMeta struct {
 	// Checkbox database property schema objects have no additional configuration within the `checkbox` property.
 	Checkbox *map[string]interface{} `json:"checkbox,omitempty"`
 
+	// Created by database property objects have no additional configuration within the `created_by` property.
+	CreatedBy *map[string]interface{} `json:"created_by,omitempty"`
+
+	// Created time database property objects have no additional configuration within the `created_time` property.
+	CreatedTime *map[string]interface{} `json:"created_time,omitempty"`
+
 	// Date database property schema objects have no additional configuration within the `date` property.
 	Date *map[string]interface{} `json:"date,omitempty"`
+
+	// Email database property objects have no additional configuration within the `email` property.
+	Email *map[string]interface{} `json:"email,omitempty"`
 
 	// File database property schema objects have no additional configuration within the `file` property.
 	Files *map[string]interface{} `json:"files,omitempty"`
 
+	// Formula database property objects contain this configuration within the `formula` property.
+	Formula *FormulaConfig `json:"formula,omitempty"`
+
 	// A short identifier (not a UUID).
-	Id          string                  `json:"id"`
-	MultiSelect *PropertyOptionsWrapper `json:"multi_select,omitempty"`
+	Id string `json:"id"`
+
+	// Last edited by database property objects have no additional configuration within the `last_edited_by` property.
+	LastEditedBy *map[string]interface{} `json:"last_edited_by,omitempty"`
+
+	// Last edited time database property objects have no additional configuration within the `last_edited_time` property.
+	LastEditedTime *map[string]interface{} `json:"last_edited_time,omitempty"`
+	MultiSelect    *PropertyOptionsWrapper `json:"multi_select,omitempty"`
 
 	// The name of the property as it appears in Notion.
 	Name string `json:"name"`
 
 	// Number database property schema objects contain this configuration within the number property.
-	Number   *NumberConfig          `json:"number,omitempty"`
-	Relation *RelationConfiguration `json:"relation,omitempty"`
+	Number *NumberConfig `json:"number,omitempty"`
+
+	// People database property objects have no additional configuration within the `people` property.
+	People *map[string]interface{} `json:"people,omitempty"`
+
+	// Phone number database property objects have no additional configuration within the `phone_number` property.
+	PhoneNumber *map[string]interface{} `json:"phone_number,omitempty"`
+	Relation    *RelationConfiguration  `json:"relation,omitempty"`
 
 	// Text database property schema objects have no additional configuration within the `rich_text` property.
 	RichText *map[string]interface{} `json:"rich_text,omitempty"`
-	Select   *PropertyOptionsWrapper `json:"select,omitempty"`
+
+	// Rollup database property objects contain the following configuration within the `rollup` property.
+	Rollup *RollupConfig           `json:"rollup,omitempty"`
+	Select *PropertyOptionsWrapper `json:"select,omitempty"`
+
+	// Status database properties cannot currently be configured via the API and so have no additional configuration within the `status` property.
+	Status *map[string]interface{} `json:"status,omitempty"`
 
 	// Title database property objects have no additional configuration within the `title` property.
 	Title *map[string]interface{} `json:"title,omitempty"`
 
 	// Type of the property.
 	Type PropertyType `json:"type"`
+
+	// URL database property objects have no additional configuration within the `url` property.
+	Url *map[string]interface{} `json:"url,omitempty"`
 }
 
 // PropertyMetas defines model for PropertyMetas.
@@ -880,9 +973,11 @@ type PropertyMetas interface{}
 // Multi-select or select option values.
 type PropertyOption struct {
 	// The color of the block.
-	Color Color  `json:"color"`
-	Id    string `json:"id"`
-	Name  string `json:"name"`
+	Color Color `json:"color"`
+
+	// A unique identifier for a page, block, database, user, or option.
+	Id   UUID   `json:"id"`
+	Name string `json:"name"`
 }
 
 // An array of multi-select or select option values.
@@ -899,42 +994,63 @@ type PropertyType string
 
 // A property value defines the identifier, type, and value of a page property in a page object. It's used when retrieving and updating pages ex: Create and Update pages.
 type PropertyValue struct {
-	Checkbox *bool  `json:"checkbox,omitempty"`
-	Date     *Date  `json:"date,omitempty"`
-	Files    *Files `json:"files,omitempty"`
+	Checkbox *bool `json:"checkbox,omitempty"`
+
+	// The User object represents a user in a Notion workspace. Users include full workspace members, and bots. Guests are not included.
+	CreatedBy   *User      `json:"created_by,omitempty"`
+	CreatedTime *time.Time `json:"created_time,omitempty"`
+	Date        *Date      `json:"date,omitempty"`
+	Email       *string    `json:"email,omitempty"`
+	Files       *Files     `json:"files,omitempty"`
+
+	// Formula property value objects represent the result of evaluating a formula described in the database's properties. These objects contain a type key and a key corresponding with the value of type. The value of a formula cannot be updated directly.
+	//
+	// ## Formula values may not match the Notion UI.
+	//
+	// Formulas returned in page objects are subject to a 25 page reference limitation. The Retrieve a page property endpoint should be used to get an accurate formula value.
+	Formula *Formula `json:"formula,omitempty"`
 
 	// Underlying identifier for the property. This identifier is guaranteed to remain constant when the property name changes. It may be a UUID, but is often a short random string.
 	//
 	// The id may be used in place of name when creating or updating pages.
 	Id string `json:"id"`
 
+	// The User object represents a user in a Notion workspace. Users include full workspace members, and bots. Guests are not included.
+	LastEditedBy *User `json:"last_edited_by,omitempty"`
+
 	// An array of multi-select or select option values.
 	MultiSelect *PropertyOptions `json:"multi_select,omitempty"`
 
 	// Number property value objects contain a number within the `number` property.
-	Number   *float32     `json:"number,omitempty"`
-	Relation *References  `json:"relation,omitempty"`
-	RichText *RichTexts   `json:"rich_text,omitempty"`
-	Select   *SelectValue `json:"select,omitempty"`
-	Title    *RichTexts   `json:"title,omitempty"`
+	Number      *float32    `json:"number,omitempty"`
+	People      *[]User     `json:"people,omitempty"`
+	PhoneNumber *string     `json:"phone_number,omitempty"`
+	Relation    *References `json:"relation,omitempty"`
+	RichText    *RichTexts  `json:"rich_text,omitempty"`
+
+	// Rollup property value objects represent the result of evaluating a rollup described in the database's properties. These objects contain a type key and a key corresponding with the value of type. The value of a rollup cannot be updated directly.
+	//
+	// ## Rollup values may not match the Notion UI.
+	//
+	// Rollups returned in page objects are subject to a 25 page reference limitation. The Retrieve a page property endpoint should be used to get an accurate formula value.
+	Rollup *Rollup      `json:"rollup,omitempty"`
+	Select *SelectValue `json:"select,omitempty"`
+	Status *SelectValue `json:"status,omitempty"`
+	Title  *RichTexts   `json:"title,omitempty"`
 
 	// Type of the property.
 	Type PropertyType `json:"type"`
+
+	// URL property value objects contain a non-empty string within the url property. The string describes a web address.
+	Url *string `json:"url,omitempty"`
 }
 
 // Properties of a page or database.
 type PropertyValues interface{}
 
-// Quote block objects contain the following information within the quote field.
-type Quote struct {
-	// The color of the block.
-	Color    Color     `json:"color"`
-	RichText RichTexts `json:"rich_text"`
-}
-
 // Reference defines model for Reference.
 type Reference struct {
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	Id UUID `json:"id"`
 }
 
@@ -943,7 +1059,7 @@ type References []Reference
 
 // RelationConfiguration defines model for RelationConfiguration.
 type RelationConfiguration struct {
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	DatabaseId UUID `json:"database_id"`
 
 	// By default, relations are formed as two synced properties across databases: if you make a change to one property, it updates the synced property at the same time. `synced_property_id` refers to the `id` of the property in the related database. This is usually a short string of random letters and symbols.
@@ -981,13 +1097,58 @@ type RichTextType string
 // RichTexts defines model for RichTexts.
 type RichTexts []RichText
 
+// Rollup property value objects represent the result of evaluating a rollup described in the database's properties. These objects contain a type key and a key corresponding with the value of type. The value of a rollup cannot be updated directly.
+//
+// ## Rollup values may not match the Notion UI.
+//
+// Rollups returned in page objects are subject to a 25 page reference limitation. The Retrieve a page property endpoint should be used to get an accurate formula value.
+type Rollup struct {
+	// Array rollup property values contain an array of number, date, or string objects within the results property.
+	Array *[]interface{} `json:"array,omitempty"`
+
+	// Date rollup property values contain a date property value within the date property.
+	Date     *time.Time `json:"date,omitempty"`
+	Function string     `json:"function"`
+
+	// Number rollup property values contain a number within the number property.
+	Number *float32 `json:"number,omitempty"`
+
+	// String rollup property values contain an optional string within the string property.
+	String *string    `json:"string,omitempty"`
+	Type   RollupType `json:"type"`
+}
+
+// RollupType defines model for Rollup.Type.
+type RollupType string
+
+// Rollup database property objects contain the following configuration within the `rollup` property.
+type RollupConfig struct {
+	// The function that is evaluated for every page in the relation of the rollup.
+	Function RollupConfigFunction `json:"function"`
+
+	// The `id` of the relation property this property is responsible for rolling up.
+	RelationPropertyId string `json:"relation_property_id"`
+
+	// The name of the relation property this property is responsible for rolling up.
+	RelationPropertyName string `json:"relation_property_name"`
+
+	// The `id` of the property of the pages in the related database that is used as an input to function.
+	RollupPropertyId string `json:"rollup_property_id"`
+
+	// The name of the property of the pages in the related database that is used as an input to `function`.
+	RollupPropertyName string `json:"rollup_property_name"`
+}
+
+// The function that is evaluated for every page in the relation of the rollup.
+type RollupConfigFunction string
+
 // SelectValue defines model for SelectValue.
 type SelectValue struct {
 	// The color of the block.
 	Color Color `json:"color"`
 
-	// A unique identifier for a page, block, database, or user.
-	Id UUID `json:"id"`
+	// ID of the option. Contrary to the documentation, this is usally not a UUID.
+	Id string `json:"id"`
 
 	// Name of the option as it appears in Notion.
 	//
@@ -1019,7 +1180,7 @@ type SyncedBlock struct {
 
 // SyncedFrom defines model for SyncedFrom.
 type SyncedFrom struct {
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	BlockId *UUID          `json:"block_id,omitempty"`
 	Type    SyncedFromType `json:"type"`
 }
@@ -1087,14 +1248,7 @@ type ToDo struct {
 	RichText RichTexts `json:"rich_text"`
 }
 
-// Toggle block objects contain the following information within the toggle field.
-type Toggle struct {
-	// The color of the block.
-	Color    Color     `json:"color"`
-	RichText RichTexts `json:"rich_text"`
-}
-
-// A unique identifier for a page, block, database, or user.
+// A unique identifier for a page, block, database, user, or option.
 type UUID string
 
 // The User object represents a user in a Notion workspace. Users include full workspace members, and bots. Guests are not included.
@@ -1103,7 +1257,7 @@ type User struct {
 	AvatarUrl *string `json:"avatar_url,omitempty"`
 	Bot       *Bot    `json:"bot,omitempty"`
 
-	// A unique identifier for a page, block, database, or user.
+	// A unique identifier for a page, block, database, user, or option.
 	Id UUID `json:"id"`
 
 	// User's name, as displayed in Notion.
@@ -1137,7 +1291,7 @@ type UsersList struct {
 
 // File objects contain data about files uploaded to Notion as well as external files linked in Notion.
 type Video struct {
-	Caption *RichTexts `json:"caption,omitempty"`
+	Caption RichTexts `json:"caption"`
 
 	// An external file is any URL that isn't hosted by Notion.
 	External *ExternalFile `json:"external,omitempty"`
@@ -1152,7 +1306,7 @@ type Video struct {
 // Type of this file object.
 type VideoType string
 
-// A unique identifier for a page, block, database, or user.
+// A unique identifier for a page, block, database, user, or option.
 type Id UUID
 
 // The number of items from the full list desired in the response.

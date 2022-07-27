@@ -1,0 +1,98 @@
+{
+  "object": "block",
+  "id": "a610b904-c43a-4105-9886-71918e86ad92",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T18:01:00.000Z",
+  "last_edited_time": "2022-07-14T18:02:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "code",
+  "code": {
+    "caption": [
+      {
+        "type": "text",
+        "text": {
+          "content": "It even has a caption!",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "It even has a caption!",
+        "href": null
+      }
+    ],
+    "rich_text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "func main() {\n\t",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "func main() {\n\t",
+        "href": null
+      },
+      {
+        "type": "text",
+        "text": {
+          "content": "startNotion",
+          "link": {
+            "url": "https://developers.notion.com/reference/block"
+          }
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "startNotion",
+        "href": "https://developers.notion.com/reference/block"
+      },
+      {
+        "type": "text",
+        "text": {
+          "content": "()\n}",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "()\n}",
+        "href": null
+      }
+    ],
+    "language": "go"
+  }
+}

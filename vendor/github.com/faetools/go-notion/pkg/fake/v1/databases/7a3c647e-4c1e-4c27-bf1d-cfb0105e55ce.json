@@ -1,0 +1,302 @@
+{
+  "object": "database",
+  "id": "7a3c647e-4c1e-4c27-bf1d-cfb0105e55ce",
+  "cover": null,
+  "icon": null,
+  "created_time": "2022-07-14T18:03:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_time": "2022-07-23T11:44:00.000Z",
+  "title": [
+    {
+      "type": "text",
+      "text": {
+        "content": "My Child Database",
+        "link": null
+      },
+      "annotations": {
+        "bold": false,
+        "italic": false,
+        "strikethrough": false,
+        "underline": false,
+        "code": false,
+        "color": "default"
+      },
+      "plain_text": "My Child Database",
+      "href": null
+    }
+  ],
+  "description": [],
+  "is_inline": true,
+  "properties": {
+    "formula number": {
+      "id": "%3DuTh",
+      "name": "formula number",
+      "type": "formula",
+      "formula": {
+        "expression": "prop(\"A number\")"
+      }
+    },
+    "count of relations": {
+      "id": "%40ft%3F",
+      "name": "count of relations",
+      "type": "rollup",
+      "rollup": {
+        "rollup_property_name": "Name",
+        "relation_property_name": "Equal relation",
+        "rollup_property_id": "title",
+        "relation_property_id": "EUgY",
+        "function": "count"
+      }
+    },
+    "equal relations": {
+      "id": "ASTz",
+      "name": "equal relations",
+      "type": "formula",
+      "formula": {
+        "expression": "length(prop(\"Equal relation\"))"
+      }
+    },
+    "A number": {
+      "id": "CQUf",
+      "name": "A number",
+      "type": "number",
+      "number": {
+        "format": "number"
+      }
+    },
+    "Property checkbox": {
+      "id": "C%5EC%3A",
+      "name": "Property checkbox",
+      "type": "formula",
+      "formula": {
+        "expression": "prop(\"My checkbox\")"
+      }
+    },
+    "Equal relation": {
+      "id": "EUgY",
+      "name": "Equal relation",
+      "type": "relation",
+      "relation": {
+        "database_id": "7a3c647e-4c1e-4c27-bf1d-cfb0105e55ce",
+        "synced_property_id": "EUgY",
+        "synced_property_name": "Equal relation"
+      }
+    },
+    "My checkbox": {
+      "id": "JuTz",
+      "name": "My checkbox",
+      "type": "checkbox",
+      "checkbox": {}
+    },
+    "files": {
+      "id": "KXdF",
+      "name": "files",
+      "type": "files",
+      "files": {}
+    },
+    "when it was created": {
+      "id": "NeE%60",
+      "name": "when it was created",
+      "type": "created_time",
+      "created_time": {}
+    },
+    "Property": {
+      "id": "RYYU",
+      "name": "Property",
+      "type": "phone_number",
+      "phone_number": {}
+    },
+    "contact": {
+      "id": "TWA%3B",
+      "name": "contact",
+      "type": "email",
+      "email": {}
+    },
+    "Top": {
+      "id": "UtGj",
+      "name": "Top",
+      "type": "relation",
+      "relation": {
+        "database_id": "7a3c647e-4c1e-4c27-bf1d-cfb0105e55ce",
+        "synced_property_name": "Sub",
+        "synced_property_id": "VN:D"
+      }
+    },
+    "tags": {
+      "id": "UuqS",
+      "name": "tags",
+      "type": "multi_select",
+      "multi_select": {
+        "options": [
+          {
+            "id": "5e3a1052-bbdd-4b06-a321-1a6006877d34",
+            "name": "tag 1",
+            "color": "orange"
+          },
+          {
+            "id": "a013f196-72c4-44bd-b40d-1acbf65249c3",
+            "name": "tag 2",
+            "color": "red"
+          },
+          {
+            "id": "5f469e5d-e74d-45a9-aa89-a87dad5abaf8",
+            "name": "tag 3",
+            "color": "gray"
+          }
+        ]
+      }
+    },
+    "Sub": {
+      "id": "VN%3AD",
+      "name": "Sub",
+      "type": "relation",
+      "relation": {
+        "database_id": "7a3c647e-4c1e-4c27-bf1d-cfb0105e55ce",
+        "synced_property_name": "Top",
+        "synced_property_id": "UtGj"
+      }
+    },
+    "formula": {
+      "id": "XJ%3Dc",
+      "name": "formula",
+      "type": "formula",
+      "formula": {
+        "expression": "if(prop(\"yes or no?\"), \"yes\", \"no\")"
+      }
+    },
+    "people": {
+      "id": "%60cG%5E",
+      "name": "people",
+      "type": "people",
+      "people": {}
+    },
+    "rollup date": {
+      "id": "czmt",
+      "name": "rollup date",
+      "type": "rollup",
+      "rollup": {
+        "rollup_property_name": "some date",
+        "relation_property_name": "Equal relation",
+        "rollup_property_id": "uK`G",
+        "relation_property_id": "EUgY",
+        "function": "show_unique"
+      }
+    },
+    "who last edited it": {
+      "id": "eszR",
+      "name": "who last edited it",
+      "type": "last_edited_by",
+      "last_edited_by": {}
+    },
+    "select": {
+      "id": "hiMX",
+      "name": "select",
+      "type": "select",
+      "select": {
+        "options": [
+          {
+            "id": "[;Jv",
+            "name": "bar",
+            "color": "blue"
+          },
+          {
+            "id": "q~Z:",
+            "name": "foo",
+            "color": "green"
+          }
+        ]
+      }
+    },
+    "date formula": {
+      "id": "jWgQ",
+      "name": "date formula",
+      "type": "formula",
+      "formula": {
+        "expression": "prop(\"some date\")"
+      }
+    },
+    "rollup string": {
+      "id": "kSwR",
+      "name": "rollup string",
+      "type": "rollup",
+      "rollup": {
+        "rollup_property_name": "Name",
+        "relation_property_name": "Equal relation",
+        "rollup_property_id": "title",
+        "relation_property_id": "EUgY",
+        "function": "show_unique"
+      }
+    },
+    "yes or no?": {
+      "id": "pt%3F%5D",
+      "name": "yes or no?",
+      "type": "checkbox",
+      "checkbox": {}
+    },
+    "some date": {
+      "id": "uK%60G",
+      "name": "some date",
+      "type": "date",
+      "date": {}
+    },
+    "Money": {
+      "id": "wtdu",
+      "name": "Money",
+      "type": "number",
+      "number": {
+        "format": "euro"
+      }
+    },
+    "number with commas": {
+      "id": "yUX%3B",
+      "name": "number with commas",
+      "type": "number",
+      "number": {
+        "format": "number_with_commas"
+      }
+    },
+    "meme links": {
+      "id": "z%3BWh",
+      "name": "meme links",
+      "type": "url",
+      "url": {}
+    },
+    "Some text": {
+      "id": "~FiP",
+      "name": "Some text",
+      "type": "rich_text",
+      "rich_text": {}
+    },
+    "who created it": {
+      "id": "~esH",
+      "name": "who created it",
+      "type": "created_by",
+      "created_by": {}
+    },
+    "Status": {
+      "id": "~%7CtN",
+      "name": "Status",
+      "type": "status",
+      "status": {}
+    },
+    "Name": {
+      "id": "title",
+      "name": "Name",
+      "type": "title",
+      "title": {}
+    }
+  },
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "url": "https://www.notion.so/7a3c647e4c1e4c27bf1dcfb0105e55ce",
+  "archived": false
+}

@@ -1,23 +1,99 @@
 package notion
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
-type propertyValue PropertyValue
+type (
+	propertyValue PropertyValue
 
-type propertyValueDate struct {
-	ID   string       `json:"id"`
-	Type PropertyType `json:"type"`
-	Date *Date        `json:"date"`
-}
+	date struct {
+		ID   string `json:"id,omitempty"`
+		Type string `json:"type"`
+		Date *Date  `json:"date"`
+	}
+
+	number struct {
+		ID     string   `json:"id,omitempty"`
+		Type   string   `json:"type"`
+		Number *float32 `json:"number"`
+	}
+
+	propertyValueSelect struct {
+		ID     string       `json:"id"`
+		Type   PropertyType `json:"type"`
+		Select *SelectValue `json:"select"`
+	}
+
+	propertyValueStatus struct {
+		ID     string       `json:"id"`
+		Type   PropertyType `json:"type"`
+		Status *SelectValue `json:"status"`
+	}
+
+	propertyValueURL struct {
+		ID   string       `json:"id"`
+		Type PropertyType `json:"type"`
+		URL  *string      `json:"url"`
+	}
+
+	propertyValuePhone struct {
+		ID          string       `json:"id"`
+		Type        PropertyType `json:"type"`
+		PhoneNumber *string      `json:"phone_number"`
+	}
+
+	propertyValueEmail struct {
+		ID    string       `json:"id"`
+		Type  PropertyType `json:"type"`
+		Email *string      `json:"email"`
+	}
+)
 
 // MarshalJSON fulfils json.Marshaler.
 func (v PropertyValue) MarshalJSON() ([]byte, error) {
 	switch v.Type {
 	case PropertyTypeDate:
-		return json.Marshal(propertyValueDate{
+		return json.Marshal(date{
+			ID:   v.Id,
+			Type: string(v.Type),
+			Date: v.Date,
+		})
+	case PropertyTypeNumber:
+		return json.Marshal(number{
+			ID:     v.Id,
+			Type:   string(v.Type),
+			Number: v.Number,
+		})
+	case PropertyTypeSelect:
+		return json.Marshal(propertyValueSelect{
+			ID:     v.Id,
+			Type:   v.Type,
+			Select: v.Select,
+		})
+	case PropertyTypeStatus:
+		return json.Marshal(propertyValueStatus{
+			ID:     v.Id,
+			Type:   v.Type,
+			Status: v.Status,
+		})
+	case PropertyTypeUrl:
+		return json.Marshal(propertyValueURL{
 			ID:   v.Id,
 			Type: v.Type,
-			Date: v.Date,
+			URL:  v.Url,
+		})
+	case PropertyTypePhoneNumber:
+		return json.Marshal(propertyValuePhone{
+			ID:          v.Id,
+			Type:        v.Type,
+			PhoneNumber: v.PhoneNumber,
+		})
+	case PropertyTypeEmail:
+		return json.Marshal(propertyValueEmail{
+			ID:    v.Id,
+			Type:  v.Type,
+			Email: v.Email,
 		})
 	default:
 		return json.Marshal(propertyValue(v))

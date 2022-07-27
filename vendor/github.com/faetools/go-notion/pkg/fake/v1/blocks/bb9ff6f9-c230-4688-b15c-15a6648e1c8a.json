@@ -1,0 +1,43 @@
+{
+  "object": "block",
+  "id": "bb9ff6f9-c230-4688-b15c-15a6648e1c8a",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T05:33:00.000Z",
+  "last_edited_time": "2022-07-14T05:34:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "paragraph",
+  "paragraph": {
+    "rich_text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "This is a red paragraph.",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "red"
+        },
+        "plain_text": "This is a red paragraph.",
+        "href": null
+      }
+    ],
+    "color": "default"
+  }
+}

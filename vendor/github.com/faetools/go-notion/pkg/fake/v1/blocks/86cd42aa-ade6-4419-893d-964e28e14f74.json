@@ -1,0 +1,43 @@
+{
+  "object": "block",
+  "id": "86cd42aa-ade6-4419-893d-964e28e14f74",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T18:05:00.000Z",
+  "last_edited_time": "2022-07-14T18:06:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "embed",
+  "embed": {
+    "caption": [
+      {
+        "type": "text",
+        "text": {
+          "content": "A great German city!",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "A great German city!",
+        "href": null
+      }
+    ],
+    "url": "https://www.google.com/maps/place/Berlin,+Germany/@52.5068441,13.4247317,10z/data=!3m1!4b1!4m5!3m4!1s0x47a84e373f035901:0x42120465b5e3b70!8m2!3d52.5200066!4d13.404954"
+  }
+}

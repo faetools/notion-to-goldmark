@@ -1,0 +1,77 @@
+{
+  "object": "block",
+  "id": "80a66dc8-9dab-4e7b-8332-99775aedc559",
+  "parent": {
+    "type": "page_id",
+    "page_id": "96245c8f-1784-44a4-82ad-1941127c3ec3"
+  },
+  "created_time": "2022-07-14T17:44:00.000Z",
+  "last_edited_time": "2022-07-14T17:45:00.000Z",
+  "created_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "last_edited_by": {
+    "object": "user",
+    "id": "af171d5d-c36f-45bc-a0a3-6086c0dafa45"
+  },
+  "has_children": false,
+  "archived": false,
+  "type": "paragraph",
+  "paragraph": {
+    "rich_text": [
+      {
+        "type": "text",
+        "text": {
+          "content": "This is ",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": "This is ",
+        "href": null
+      },
+      {
+        "type": "text",
+        "text": {
+          "content": "blue",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "blue"
+        },
+        "plain_text": "blue",
+        "href": null
+      },
+      {
+        "type": "text",
+        "text": {
+          "content": " but the entire paragraph is yellow.",
+          "link": null
+        },
+        "annotations": {
+          "bold": false,
+          "italic": false,
+          "strikethrough": false,
+          "underline": false,
+          "code": false,
+          "color": "default"
+        },
+        "plain_text": " but the entire paragraph is yellow.",
+        "href": null
+      }
+    ],
+    "color": "yellow"
+  }
+}

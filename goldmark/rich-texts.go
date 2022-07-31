@@ -11,16 +11,21 @@ import (
 	extast "github.com/yuin/goldmark/extension/ast"
 )
 
+const mergeAnnotations = false
+
 // TODO we might have to work with empty spaces:
 // - trim them and add back in without formatting
 
 func toNodeRichTexts(rts notion.RichTexts) (ns []ast.Node) {
 	// construct the initial wrappers
-	var ws annotationWrappers = lo.Map(rts,
-		func(rt notion.RichText, _ int) *annotationWrapper { return newAnnotationWrapper(rt) })
+	var ws annotationWrappers = lo.Map(rts, func(rt notion.RichText, _ int) *annotationWrapper {
+		return newAnnotationWrapper(rt)
+	})
 
 	// merge siblings that have the same annotation
-	ws = ws.mergeSiblings()
+	if mergeAnnotations {
+		ws = ws.mergeSiblings()
+	}
 
 	// transform each wrapper into a node
 	return lo.Map(ws, func(w *annotationWrapper, _ int) ast.Node { return w.toNode() })
@@ -86,10 +91,10 @@ func mergeIfSameAnnotation(w1, w2 *annotationWrapper) *annotationWrapper {
 		this, next, merged *bool
 	}{
 		{&w1.ann.Bold, &w2.ann.Bold, &ann.Bold},
+		{&w1.ann.Underline, &w2.ann.Underline, &ann.Underline},
 		{&w1.ann.Italic, &w2.ann.Italic, &ann.Italic},
 		{&w1.ann.Code, &w2.ann.Code, &ann.Code},
 		{&w1.ann.Strikethrough, &w2.ann.Strikethrough, &ann.Strikethrough},
-		{&w1.ann.Underline, &w2.ann.Underline, &ann.Underline},
 	} {
 		if *v.this && *v.next {
 			// set the flag for the new wrapper
@@ -158,18 +163,18 @@ func wrapInAnnotation(a notion.Annotations, children ...ast.Node) ast.Node {
 	case a.Bold:
 		a.Bold = false
 		w = ast.NewEmphasis(2)
+	case a.Underline:
+		a.Underline = false
+		w = &n_ast.Underline{}
 	case a.Italic:
 		a.Italic = false
 		w = ast.NewEmphasis(1)
-	case a.Underline:
-		a.Underline = false
-		w = ast.NewEmphasis(3)
-	case a.Strikethrough:
-		a.Strikethrough = false
-		w = extast.NewStrikethrough()
 	case a.Code:
 		a.Code = false
 		w = ast.NewCodeSpan()
+	case a.Strikethrough:
+		a.Strikethrough = false
+		w = extast.NewStrikethrough()
 	case a.Color != notion.ColorDefault && a.Color != "":
 		c := a.Color
 		a.Color = notion.ColorDefault

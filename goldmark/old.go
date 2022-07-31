@@ -1,10 +1,13 @@
 package goldmark
 
 import (
+	"fmt"
+
 	"github.com/faetools/go-notion/pkg/notion"
 	n_ast "github.com/faetools/notion-to-goldmark/ast"
 	"github.com/yuin/goldmark/ast"
 	extast "github.com/yuin/goldmark/extension/ast"
+	"github.com/yuin/goldmark/util"
 )
 
 func toNodeBookmark(b *notion.Bookmark) ast.Node {
@@ -23,28 +26,6 @@ func toNodeText(t *notion.Text) ast.Node {
 	}
 
 	return newString(t.Content)
-}
-
-func toNodeListItem(item *notion.Paragraph) ast.Node {
-	n := ast.NewListItem(0)
-
-	// TODO
-	// appendCommon(n, item.RichText, item.Children)
-
-	return wrapInColor(item.Color, n)
-}
-
-func toNodeCallout(callout *notion.Callout) ast.Node {
-	n := n_ast.NewCallout(callout.Icon)
-
-	// TODO
-	// appendCommon(n, callout.RichText, callout.Children)
-
-	return wrapInColor(callout.Color, n)
-}
-
-func toNodeChildDatabase(db *notion.Child) ast.Node {
-	return &n_ast.ChildDatabase{DB: *db}
 }
 
 func toNodeTable(table *notion.Table) ast.Node {
@@ -78,29 +59,8 @@ func toNodeTable(table *notion.Table) ast.Node {
 	return n
 }
 
-func toNodeEmbed(embed *notion.Embed) ast.Node {
-	n := &n_ast.Embed{}
-
-	link := ast.NewLink()
-	link.Destination = []byte(embed.Url)
-
-	n.AppendChild(n, link)
-
-	addCaption(n, &embed.Caption)
-
-	return n
-}
-
 func toNodeEquation(eq *notion.Equation) ast.Node {
 	return &n_ast.Equation{Expression: eq.Expression}
-}
-
-func toNodeHeading(h *notion.Paragraph, level int) ast.Node {
-	n := ast.NewHeading(level)
-
-	appendCommon(n, h.RichText, nil)
-
-	return wrapInColor(h.Color, n)
 }
 
 func appendCommon(n ast.Node, rts notion.RichTexts, children notion.Blocks) {
@@ -111,15 +71,15 @@ func appendCommon(n ast.Node, rts notion.RichTexts, children notion.Blocks) {
 	addBlockChildren(n, children)
 }
 
-func toNodeLinkPreview(pr *notion.LinkPreview) ast.Node {
-	n := &n_ast.LinkPreview{}
+// func toNodeLinkPreview(pr *notion.LinkPreview) ast.Node {
+// 	n := &n_ast.LinkPreview{}
 
-	link := ast.NewLink()
-	link.Destination = []byte(pr.Url)
-	n.AppendChild(n, link)
+// 	link := ast.NewLink()
+// 	link.Destination = []byte(pr.Url)
+// 	n.AppendChild(n, link)
 
-	return n
-}
+// 	return n
+// }
 
 func toNodeQuote(q *notion.Paragraph) ast.Node {
 	n := ast.NewBlockquote()
@@ -130,35 +90,8 @@ func toNodeQuote(q *notion.Paragraph) ast.Node {
 	return wrapInColor(q.Color, n)
 }
 
-func toNodeSyncedBlock(b *notion.SyncedBlock) ast.Node {
-	n := n_ast.NewSyncedBlock()
-
-	// TODO
-	// addBlockChildren(n, b.Children)
-
-	return n
-}
-
 func toNodeTableOfContents(toc *notion.TableOfContents) ast.Node {
 	return wrapInColor(toc.Color, &n_ast.TableOfContents{})
-}
-
-func toNodeToDo(todo *notion.ToDo) ast.Node {
-	n := extast.NewTaskCheckBox(todo.Checked)
-
-	// TODO
-	// appendCommon(n, todo.RichText, todo.Children)
-
-	return wrapInColor(todo.Color, n)
-}
-
-func toNodeToggle(t *notion.Paragraph) ast.Node {
-	n := &n_ast.Toggle{}
-
-	// TODO
-	// appendCommon(n, t.RichText, t.Children)
-
-	return wrapInColor(t.Color, n)
 }
 
 func toNodeVideo(v *notion.Video) ast.Node {
@@ -179,11 +112,63 @@ func toNodeVideo(v *notion.Video) ast.Node {
 	return n
 }
 
-func toNodeCode(c *notion.Code) ast.Node {
-	lang := ast.NewText()
+// setParentChild is a convenience method to not name the parent twice.
+func setParentChild(parent, child ast.Node) {
+	parent.AppendChild(parent, child)
+}
 
-	n := ast.NewFencedCodeBlock(lang)
+func newLink(content, dest string) *ast.Link {
+	n := ast.NewLink()
+	n.Destination = util.URLEscape([]byte(dest), true)
 
-	n.SetAttributeString("language", c.Language)
-	panic("code not yet implemented")
+	n.AppendChild(n, newString(content))
+
+	return n
+}
+
+func newString(s string) *ast.String { return ast.NewString([]byte(s)) }
+
+func newLinkToPage(id *notion.UUID) ast.Node {
+	return newLink("", fmt.Sprintf("/%s", *id))
+}
+
+func wrapInColor(c notion.Color, child ast.Node) ast.Node {
+	if c == notion.ColorDefault || c == "" {
+		return child
+	}
+
+	n := &n_ast.Color{Color: c}
+	n.AppendChild(n, child)
+
+	return n
+}
+
+// addBlockChildren adds any children blocks
+// TODO: call the API go get the children
+func addBlockChildren(n ast.Node, bs notion.Blocks) {
+	if len(bs) == 0 {
+		return
+	}
+
+	// TODO
+	// children := &n_ast.Children{}
+	// for _, child := range FromBlocks(bs) {
+	// 	children.AppendChild(children, child)
+	// }
+
+	// n.AppendChild(n, children)
+}
+
+func addCaption(n ast.Node, rts *notion.RichTexts) {
+	if rts == nil || len(*rts) == 0 {
+		return
+	}
+
+	caption := &n_ast.Caption{}
+
+	for _, child := range toNodeRichTexts(*rts) {
+		caption.AppendChild(caption, child)
+	}
+
+	setParentChild(n, caption)
 }

@@ -424,8 +424,8 @@ github.com/faetools/client v0.0.0-20220318211513-a9b944e5b437 h1:nDEVyZIqGM9nfAO
 github.com/faetools/client v0.0.0-20220318211513-a9b944e5b437/go.mod h1:nVTKKcxopRAHerCkGCXMne1KSIVlMxNfU5OOBlL+PKA=
 github.com/faetools/format v0.0.0-20220414215708-3bef0e0cc085 h1:axf314ogkxrl00WnAbNZtu3u1PHEYCFKQ+NyFg2UNBI=
 github.com/faetools/format v0.0.0-20220414215708-3bef0e0cc085/go.mod h1:Dm3ONgnDmU1OEqpOlZSme+yfy9I1I8f6mmCNfKszBfY=
-github.com/faetools/go-notion v0.0.26 h1:yXx/i9EsA5THUjidFeqyY6EPuRhV6/+3xbbJOXufcxM=
-github.com/faetools/go-notion v0.0.26/go.mod h1:fTFZUtaJX3gtHORXMlxfU5Nl8ChhUodv9aEmgAfIi10=
+github.com/faetools/go-notion v0.0.28 h1:4Zd7MFaH4hob1xmsMZLLrAVSRp9TlBEE5m348pfLao0=
+github.com/faetools/go-notion v0.0.28/go.mod h1:fTFZUtaJX3gtHORXMlxfU5Nl8ChhUodv9aEmgAfIi10=
 github.com/faetools/kit v0.0.7 h1:wcNzLBHM51LnOxfoKfWx/hAQEgzf+0rIqGjiU6ikY/g=
 github.com/faetools/kit v0.0.7/go.mod h1:sVt2/EM+YdQTCeNuknGRuG2dfi3s63uugNSVijc0pvE=
 github.com/fatih/color v1.7.0/go.mod h1:Zm6kSWBoL9eyXnKyktHP6abPY2pDugNf5KwzbycvMj4=

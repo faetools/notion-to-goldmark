@@ -101,9 +101,9 @@ func (v PropertyValue) MarshalJSON() ([]byte, error) {
 }
 
 // GetMultiSelect returns the multiselect value.
-func (v PropertyValue) GetMultiSelect() PropertyOptions {
+func (v PropertyValue) GetMultiSelect() SelectValues {
 	if v.MultiSelect == nil {
-		return PropertyOptions{}
+		return SelectValues{}
 	}
 
 	return *v.MultiSelect

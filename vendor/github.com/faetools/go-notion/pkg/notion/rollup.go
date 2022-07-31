@@ -13,20 +13,60 @@ type (
 		Function string     `json:"function"`
 	}
 
-	// 	Date   *time.Time `json:"date"`
-	// String *string    `json:"string"`
+	rollupDate struct {
+		Type     RollupType `json:"type"`
+		Date     *Date      `json:"date"`
+		Function string     `json:"function"`
+	}
+
+	rollupString struct {
+		Type     RollupType `json:"type"`
+		String   *string    `json:"string"`
+		Function string     `json:"function"`
+	}
+
+	rollupArrayItem RollupArrayItem
+
+	rollupArrayItemDate struct {
+		Type RollupArrayItemType `json:"type"`
+		Date *Date               `json:"date"`
+	}
 )
 
 // MarshalJSON fulfils json.Marshaler.
-func (v Rollup) MarshalJSON() ([]byte, error) {
-	switch v.Type {
+func (r Rollup) MarshalJSON() ([]byte, error) {
+	switch r.Type {
 	case RollupTypeNumber:
 		return json.Marshal(rollupNumber{
-			Type:     v.Type,
-			Number:   v.Number,
-			Function: v.Function,
+			Type:     r.Type,
+			Number:   r.Number,
+			Function: r.Function,
+		})
+	case RollupTypeDate:
+		return json.Marshal(rollupDate{
+			Type:     r.Type,
+			Date:     r.Date,
+			Function: r.Function,
+		})
+	case RollupTypeString:
+		return json.Marshal(rollupString{
+			Type:     r.Type,
+			String:   r.String,
+			Function: r.Function,
 		})
 	default:
-		return json.Marshal(rollup(v))
+		return json.Marshal(rollup(r))
+	}
+}
+
+func (r RollupArrayItem) MarshalJSON() ([]byte, error) {
+	switch r.Type {
+	case RollupArrayItemTypeDate:
+		return json.Marshal(rollupArrayItemDate{
+			Type: r.Type,
+			Date: r.Date,
+		})
+	default:
+		return json.Marshal(rollupArrayItem(r))
 	}
 }

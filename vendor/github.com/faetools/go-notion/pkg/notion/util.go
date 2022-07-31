@@ -37,8 +37,8 @@ func mapSlice[T, R any](collection []T, iteratee func(T) R) []R {
 }
 
 // GetNames returns names of all selected options.
-func (opts PropertyOptions) GetNames() []string {
-	return mapSlice(opts, func(opt PropertyOption) string { return opt.Name })
+func (vals SelectValues) GetNames() []string {
+	return mapSlice(vals, func(val SelectValue) string { return val.Name })
 }
 
 // GetIDs returns the UUIDs of all references.

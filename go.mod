@@ -3,8 +3,7 @@ module github.com/faetools/notion-to-goldmark
 go 1.18
 
 require (
-	github.com/faetools/client v0.0.0-20220318211513-a9b944e5b437
-	github.com/faetools/go-notion v0.0.26
+	github.com/faetools/go-notion v0.0.28
 	github.com/samber/lo v1.25.0
 	github.com/stretchr/testify v1.7.2
 	github.com/yuin/goldmark v1.4.13
@@ -15,6 +14,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deepmap/oapi-codegen v1.11.0 // indirect
 	github.com/faetools/cgtools v0.0.4 // indirect
+	github.com/faetools/client v0.0.0-20220318211513-a9b944e5b437 // indirect
 	github.com/faetools/format v0.0.0-20220414215708-3bef0e0cc085 // indirect
 	github.com/faetools/kit v0.0.7 // indirect
 	github.com/fatih/color v1.13.0 // indirect

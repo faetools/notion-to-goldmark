@@ -21,7 +21,7 @@ github.com/faetools/format/golang
 github.com/faetools/format/markdown
 github.com/faetools/format/writers
 github.com/faetools/format/yaml
-# github.com/faetools/go-notion v0.0.26
+# github.com/faetools/go-notion v0.0.28
 ## explicit; go 1.18
 github.com/faetools/go-notion/pkg/client
 github.com/faetools/go-notion/pkg/docs

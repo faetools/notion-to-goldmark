@@ -7,7 +7,7 @@ import (
 // KindEmbed is a ast.NodeKind of the Embed node.
 var KindEmbed = ast.NewNodeKind("Embed")
 
-// A Embed represents a embed in Notion.
+// A Embed represents an embedding in Notion.
 type Embed struct {
 	ast.BaseInline
 }

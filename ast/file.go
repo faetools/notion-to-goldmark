@@ -6,6 +6,7 @@ import (
 
 	"github.com/faetools/go-notion/pkg/notion"
 	"github.com/yuin/goldmark/ast"
+	"github.com/yuin/goldmark/util"
 )
 
 // KindFile is a ast.NodeKind of the File node.
@@ -44,7 +45,7 @@ func NewFile(f notion.FileWithCaption, tp FileType) *File {
 	}
 
 	link := ast.NewLink()
-	link.Destination = []byte(f.URL())
+	link.Destination = util.URLEscape([]byte(f.URL()), true)
 
 	if tp == FileTypeImage {
 		n.AppendChild(n, ast.NewImage(link))
